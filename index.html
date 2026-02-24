@@ -162,25 +162,25 @@
       border:1px solid rgba(255,255,255,.12);
     }
 
-    /* BIG LOGO (sichtbar – nicht mehr negativ verschoben) */
+    /* BIG LOGO (sichtbar) */
     .topLogo{
       position: relative;
       display:flex;
       justify-content:center;
       pointer-events:none;
       z-index: 30;
-      margin-top: 0;             /* <-- wie gewünscht auf 0 */
-      padding-top: 10px;         /* bisschen Luft unter der Nav */
+      margin-top: 0;
+      padding-top: 10px;
     }
     .topLogo img{
-      height:260px;              /* Desktop Größe */
+      height:260px;
       max-width:min(780px, 92vw);
       object-fit:contain;
       display:block;
       filter: drop-shadow(0 26px 48px rgba(0,0,0,.60));
       opacity:.98;
     }
-    .topLogoSpacer{ height: 8px; } /* praktisch kein Abstand */
+    .topLogoSpacer{ height: 8px; }
 
     /* GENERAL */
     section{padding:26px 0}
@@ -453,7 +453,6 @@
       display:block;
       border-radius:18px;
     }
-    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
     .slot{
       display:inline-flex; align-items:center; gap:8px;
       padding:6px 10px; border-radius:999px;
@@ -474,6 +473,30 @@
       font-style:normal;
       font-weight:1000;
       font-size:11px;
+    }
+
+    /* Update Cards */
+    .updateCard{
+      margin-top:12px;
+      padding:14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+    .updateTop{
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .badge{
+      font-size:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
     }
 
     /* Footer */
@@ -539,7 +562,6 @@
       .leadBox{grid-template-columns: 110px 1fr}
       .leadPhoto{width:110px;height:110px;border-radius:20px}
 
-      /* Logo mobil */
       .topLogo img{ height:200px; }
       .topLogo{ padding-top: 8px; }
       .topLogoSpacer{ height: 6px; }
@@ -555,7 +577,6 @@
       .slogan{font-size:40px}
 
       .btnrow .btn{flex:1 1 100%}
-      .actions .btn{flex:1 1 100%}
 
       .ballot{align-items:flex-start}
       .checkBox{width:50px; height:50px; flex:0 0 50px}
@@ -571,7 +592,6 @@
       .leadBox{grid-template-columns: 1fr}
       .leadPhoto{width:100%; height:220px}
 
-      /* Logo sehr klein */
       .topLogo img{ height:150px; }
       .topLogo{ padding-top: 6px; }
       .topLogoSpacer{ height: 6px; }
@@ -602,6 +622,7 @@
             <p class="dropTitle">Schnell</p>
             <a class="dropLink pillCta" href="#wahl">Wahl 17.03</a>
             <a class="dropLink" href="#team">Team</a>
+            <a class="dropLink" href="#updates">Updates</a>
           </div>
 
           <div class="dropGroup">
@@ -1097,6 +1118,50 @@
       </div>
     </section>
 
+    <!-- UPDATES (neu, ganz unten als Box) -->
+    <section id="updates">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Beispiel Updates</h2>
+          <p class="muted">Hier posten wir Updates, wenn es etwas gibt oder ansteht.</p>
+        </div>
+
+        <div class="card" style="padding:22px">
+          <div class="box">
+            <h3 style="margin:0">Updates</h3>
+            <p class="muted" style="margin-top:10px">
+              Sobald es Neuigkeiten gibt, veröffentlichen wir sie hier in kurzer, verständlicher Form.
+            </p>
+
+            <div class="updateCard">
+              <div class="updateTop">
+                <span class="badge">Status Update</span>
+                <span class="muted" style="font-size:12px">00.00.2026</span>
+              </div>
+              <b style="display:block; margin-top:8px">Thema: Beispiel Arbeitszeit</b>
+              <p class="muted" style="margin-top:6px">
+                Stand: Rückmeldungen aus den Abteilungen gesammelt.<br>
+                Nächster Schritt: Klärung und Vorschlag erarbeiten.
+              </p>
+            </div>
+
+            <div class="updateCard">
+              <div class="updateTop">
+                <span class="badge">Status Update</span>
+                <span class="muted" style="font-size:12px">00.00.2026</span>
+              </div>
+              <b style="display:block; margin-top:8px">Thema: Beispiel Transparenz</b>
+              <p class="muted" style="margin-top:6px">
+                Stand: Infos zusammengetragen und verständlich aufbereitet.<br>
+                Nächster Schritt: Veröffentlichung als kurzer Überblick.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer">
       <div class="wrap">
         <div class="grid2">
@@ -1144,7 +1209,6 @@
     /******************************************************************
      * SETTINGS
      ******************************************************************/
-    const SHOW_TEAMS_BUTTONS = false;
     const TEAM_VISIBLE_DEFAULT = 12;
 
     /******************************************************************
@@ -1177,7 +1241,7 @@
     });
 
     /******************************************************************
-     * COUNTDOWN (nur Tage) – robust
+     * COUNTDOWN (nur Tage)
      ******************************************************************/
     (function () {
       const daysEl = document.getElementById("dDays");
