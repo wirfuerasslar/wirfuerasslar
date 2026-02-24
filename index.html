@@ -1284,6 +1284,29 @@
     });
 
     renderTeam();
+    // Countdown (nur Tage)
+(function () {
+  const daysEl = document.getElementById("dDays");
+  if (!daysEl) return; // wenn Element fehlt, nichts tun
+
+  // 17.03.2026 (Monat ist 0-basiert -> März = 2)
+  const electionDate = new Date(2026, 2, 17, 8, 0, 0);
+
+  function updateCountdown() {
+    const now = new Date();
+    const diff = electionDate.getTime() - now.getTime();
+
+    if (diff <= 0) {
+      daysEl.textContent = "0";
+      return;
+    }
+    const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    daysEl.textContent = String(days);
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 60 * 60 * 1000); // stündlich reicht
+})();
   </script>
 </body>
 </html>
