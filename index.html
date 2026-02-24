@@ -42,7 +42,7 @@
     .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
     .muted{color:var(--muted)}
 
-    /* NAV (sticky stays, logo will NOT be inside it) */
+    /* NAV */
     .nav{
       position:sticky; top:0; z-index:60;
       backdrop-filter: blur(10px);
@@ -162,24 +162,25 @@
       border:1px solid rgba(255,255,255,.12);
     }
 
-    /* BIG LOGO (scrolls away, overlaps header line) */
+    /* BIG LOGO (sichtbar – nicht mehr negativ verschoben) */
     .topLogo{
       position: relative;
       display:flex;
       justify-content:center;
       pointer-events:none;
       z-index: 30;
-      margin-top: -200px; /* tiefer/höher */
+      margin-top: 0;             /* <-- wie gewünscht auf 0 */
+      padding-top: 10px;         /* bisschen Luft unter der Nav */
     }
     .topLogo img{
-      height:300px; /* Größe */
+      height:260px;              /* Desktop Größe */
       max-width:min(780px, 92vw);
       object-fit:contain;
       display:block;
       filter: drop-shadow(0 26px 48px rgba(0,0,0,.60));
       opacity:.98;
     }
-    .topLogoSpacer{ height: 120px; } /* Abstand unter Logo */
+    .topLogoSpacer{ height: 8px; } /* praktisch kein Abstand */
 
     /* GENERAL */
     section{padding:26px 0}
@@ -213,7 +214,7 @@
     .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
 
     /* HERO */
-    .hero{padding:28px 0 14px}
+    .hero{padding:18px 0 14px}
     .heroGrid{
       display:grid;
       grid-template-columns: 1.15fr .85fr;
@@ -537,16 +538,18 @@
       .dropdown{top:66px}
       .leadBox{grid-template-columns: 110px 1fr}
       .leadPhoto{width:110px;height:110px;border-radius:20px}
-      .topLogo{ margin-top:-160px; }
-      .topLogo img{ height:220px; }
-      .topLogoSpacer{ height: 95px; }
+
+      /* Logo mobil */
+      .topLogo img{ height:200px; }
+      .topLogo{ padding-top: 8px; }
+      .topLogoSpacer{ height: 6px; }
     }
     @media (max-width: 560px){
       :root{ --pad:16px; }
       section{padding:22px 0}
       h2{font-size:26px}
       h3{font-size:17px}
-      .hero{padding:22px 0 10px}
+      .hero{padding:16px 0 10px}
       .heroCard{padding:18px}
       .heroSide{padding:14px}
       .slogan{font-size:40px}
@@ -568,9 +571,10 @@
       .leadBox{grid-template-columns: 1fr}
       .leadPhoto{width:100%; height:220px}
 
-      .topLogo{ margin-top:-130px; }
-      .topLogo img{ height:170px; }
-      .topLogoSpacer{ height: 80px; }
+      /* Logo sehr klein */
+      .topLogo img{ height:150px; }
+      .topLogo{ padding-top: 6px; }
+      .topLogoSpacer{ height: 6px; }
     }
   </style>
 </head>
@@ -605,7 +609,6 @@
             <a class="dropLink" href="#vorstellung">Listenvertreter</a>
             <a class="dropLink" href="#themen">Wofür wir stehen</a>
             <a class="dropLink" href="#manifest">Unser Manifest</a>
-            <a class="dropLink" href="#transparenz">Transparenz</a>
           </div>
 
           <div class="dropGroup">
@@ -770,7 +773,7 @@
       </div>
     </section>
 
-    <!-- WOFÜR WIR STEHEN (alle Punkte im Transparenz-Layout + klappbar) -->
+    <!-- WOFÜR WIR STEHEN (inkl. Transparenz) -->
     <section id="themen">
       <div class="wrap">
         <div class="splitTitle">
@@ -1017,7 +1020,6 @@
             </div>
           </div>
         </details>
-
       </div>
     </section>
 
@@ -1095,70 +1097,6 @@
       </div>
     </section>
 
-    <!-- TRANSPARENZ (separater Bereich mit Updates) -->
-    <section id="transparenz">
-      <div class="wrap">
-        <div class="splitTitle">
-          <h2>Transparenz</h2>
-          <p class="muted">So halten wir euch auf dem Laufenden.</p>
-        </div>
-
-        <div class="grid2">
-          <div class="box">
-            <h3>So halten wir euch wirklich auf dem Laufenden</h3>
-
-            <p class="muted" style="margin-top:10px">
-              Transparenz heißt nicht: viel reden. Transparenz heißt: kurz sagen, was Sache ist.
-              Deshalb bekommt ihr Updates in einem festen Format – immer gleich, immer verständlich.
-            </p>
-
-            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
-              <li style="margin:6px 0"><b style="color:#fff">Thema</b> – worum geht’s</li>
-              <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was ist passiert / was ist geklärt</li>
-              <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was passiert als nächstes</li>
-              <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer ist dran</li>
-            </ul>
-
-            <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
-              <b style="display:block">Unser Stil</b>
-              <p class="muted" style="margin-top:6px">
-                Keine Romane. Kein Rumdrucksen. Keine Gerüchte. Sondern klare Updates, die jeder versteht.
-              </p>
-            </div>
-          </div>
-
-          <div class="box">
-            <h3>Beispiel Updates</h3>
-
-            <div style="margin-top:12px; padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
-              <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center">
-                <span style="font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color:var(--muted)">Status Update</span>
-                <span style="font-size:12px; color:var(--muted)">00.00.2026</span>
-              </div>
-              <b style="display:block; margin-top:8px">Thema: Beispiel Arbeitszeit</b>
-              <p class="muted" style="margin-top:6px">
-                Stand: Rückmeldungen aus den Abteilungen gesammelt.<br>
-                Nächster Schritt: Klärung und Vorschlag erarbeiten.
-              </p>
-            </div>
-
-            <div style="margin-top:12px; padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
-              <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center">
-                <span style="font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color:var(--muted)">Status Update</span>
-                <span style="font-size:12px; color:var(--muted)">00.00.2026</span>
-              </div>
-              <b style="display:block; margin-top:8px">Thema: Beispiel Transparenz</b>
-              <p class="muted" style="margin-top:6px">
-                Stand: Infos zusammengetragen und verständlich aufbereitet.<br>
-                Nächster Schritt: Veröffentlichung als kurzer Überblick.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
     <footer class="footer">
       <div class="wrap">
         <div class="grid2">
@@ -1206,7 +1144,7 @@
     /******************************************************************
      * SETTINGS
      ******************************************************************/
-    const SHOW_TEAMS_BUTTONS = false;   // später einfach true
+    const SHOW_TEAMS_BUTTONS = false;
     const TEAM_VISIBLE_DEFAULT = 12;
 
     /******************************************************************
@@ -1324,23 +1262,6 @@
       return `${PHOTO_BASE}${slot}-${first}-${last}.png`;
     }
 
-    function cleanPartEmail(s){
-      return (s || "")
-        .toString()
-        .trim()
-        .replace(/\s+/g, "")
-        .replace(/Ä/g,"Ae").replace(/Ö/g,"Oe").replace(/Ü/g,"Ue")
-        .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue")
-        .replace(/ß/g,"ss")
-        .replace(/Ş/g,"S").replace(/ş/g,"s")
-        .replace(/Ğ/g,"G").replace(/ğ/g,"g")
-        .replace(/İ/g,"I").replace(/ı/g,"i")
-        .replace(/Ç/g,"C").replace(/ç/g,"c")
-        .replace(/[^A-Za-z0-9.\-]/g,"");
-    }
-    function makeEmail(first, last){
-      return `${cleanPartEmail(first)}.${cleanPartEmail(last)}@pfeiffervacuum.com`;
-    }
     function initials(first, last){
       const a = (first || "").trim().charAt(0).toUpperCase();
       const b = (last || "").trim().charAt(0).toUpperCase();
@@ -1356,17 +1277,6 @@
       const name = fullName(person.first, person.last);
       const photo = photoPath(person);
 
-      let teamsHtml = "";
-      if(SHOW_TEAMS_BUTTONS){
-        const email = makeEmail(person.first, person.last);
-        const teamsLink = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(email)}`;
-        teamsHtml = `
-          <div class="actions">
-            <a class="btn btnPrimary" target="_blank" rel="noopener" href="${teamsLink}">Teams Chat starten</a>
-          </div>
-        `;
-      }
-
       return `
         <div class="box">
           <div class="person">
@@ -1379,7 +1289,6 @@
               <b style="display:block">${name}</b>
               <div class="muted" style="font-size:13px; margin-top:2px">${person.role || "Mitglied"}</div>
               <div class="slot"><i>${person.slot}</i> Listenplatz</div>
-              ${teamsHtml}
             </div>
           </div>
         </div>
