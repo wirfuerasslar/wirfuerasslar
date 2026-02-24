@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wir für Aßlar – Liste 3</title>
+  <meta name="description" content="Wir für Aßlar – Liste 3. Wahlwerbung zur Betriebsratswahl am 17.03. Kontakt persönlich in den Abteilungen." />
+
+  <style>
+    :root{
+      --pfeifferRed:#e2001a;
+      --pfeifferRed2:#ff2a3e;
+      --white:#ffffff;
+
+      --bg:#07070b;
+      --line:rgba(255,255,255,.12);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+
+      --shadow: 0 18px 45px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 1180px;
+      --pad: 20px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 420px at 15% 0%, rgba(226,0,26,.28), transparent 55%),
+        radial-gradient(900px 520px at 95% 10%, rgba(255,255,255,.07), transparent 60%),
+        radial-gradient(700px 420px at 55% 95%, rgba(226,0,26,.18), transparent 55%),
+        var(--bg);
+      line-height:1.55;
+      padding-bottom:96px;
+      overflow-x:hidden;
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .muted{color:var(--muted)}
+
+    /* NAV (sticky stays, logo will NOT be inside it) */
+    .nav{
+      position:sticky; top:0; z-index:60;
+      backdrop-filter: blur(10px);
+      background: rgba(7,7,11,.70);
+      border-bottom:1px solid var(--line);
+    }
+    .navInner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+      position:relative;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      text-decoration:none;
+      min-width:240px;
+    }
+    .logoBox{
+      width:42px; height:42px; border-radius:14px;
+      background: linear-gradient(135deg, var(--pfeifferRed), var(--pfeifferRed2));
+      box-shadow: 0 12px 30px rgba(226,0,26,.25);
+      display:grid; place-items:center;
+      font-weight:1000;
+      color:var(--white);
+      border:1px solid rgba(255,255,255,.14);
+      position:relative;
+      flex:0 0 42px;
+    }
+    .logoBox:after{
+      content:"✓";
+      position:absolute;
+      right:-6px;
+      bottom:-8px;
+      width:22px; height:22px;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.18);
+      color: var(--white);
+      font-size:14px;
+      box-shadow: 0 12px 24px rgba(0,0,0,.35);
+    }
+    .brand b{font-size:16px; letter-spacing:.2px; display:block}
+    .brand span{display:block; font-size:12px; color:var(--muted)}
+
+    /* Dropdown */
+    .menuBtn{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+    }
+    .menuBtn:hover{background: rgba(255,255,255,.06)}
+    .menuIcon{
+      width:26px;height:26px;border-radius:10px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      font-size:14px;
+    }
+    .dropdown{
+      position:absolute;
+      right:0;
+      top:62px;
+      width:min(360px, calc(100vw - 24px));
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(7,7,11,.94);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.60);
+      padding:10px;
+      display:none;
+      z-index:90;
+    }
+    .dropdown.open{display:block}
+    .dropGroup{
+      padding:10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      margin-bottom:10px;
+    }
+    .dropGroup:last-child{margin-bottom:0}
+    .dropTitle{
+      font-size:12px;
+      color:var(--muted);
+      margin:0 0 8px;
+      letter-spacing:.2px;
+    }
+    .dropLink{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      text-decoration:none;
+      padding:10px 10px;
+      border-radius:14px;
+      border:1px solid transparent;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .dropLink:hover{
+      color:var(--text);
+      border-color:rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+    }
+    .pillCta{
+      background: linear-gradient(135deg, var(--pfeifferRed), var(--pfeifferRed2));
+      color:var(--white);
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    /* BIG LOGO (scrolls away, overlaps header line) */
+    .topLogo{
+      position: relative;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+      z-index: 30;
+
+      /* 🔧 DEIN REGELER: tiefer = mehr negativ */
+      margin-top: 0px;
+    }
+    .topLogo img{
+      height:220px;
+      max-width:min(780px, 92vw);
+      object-fit:contain;
+      display:block;
+      filter: drop-shadow(0 26px 48px rgba(0,0,0,.60));
+      opacity:.98;
+    }
+    .topLogoSpacer{
+      height: 0px; /* Platz schaffen, damit nichts überdeckt */
+    }
+    @media (max-width: 980px){
+      .topLogo{ margin-top: -160px; }
+      .topLogo img{ height:220px; }
+      .topLogoSpacer{ height:120px; }
+    }
+    @media (max-width: 560px){
+      .topLogo{ margin-top: -130px; }
+      .topLogo img{ height:170px; }
+      .topLogoSpacer{ height:95px; }
+    }
+
+    /* GENERAL */
+    section{padding:26px 0}
+    h1{margin:14px 0 10px; font-size:46px; line-height:1.03; letter-spacing:-.9px}
+    h2{margin:0; font-size:30px; letter-spacing:-.2px}
+    h3{margin:0 0 8px; font-size:18px}
+    p{margin:0}
+    .splitTitle{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .card{
+      border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(700px 240px at 20% 0%, rgba(226,0,26,.20), transparent 55%),
+        linear-gradient(180deg, rgba(18,20,36,.92), rgba(12,13,22,.92));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .box{
+      padding:18px;
+      border-radius: var(--radius);
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      min-width:0;
+    }
+    .grid2{display:grid; grid-template-columns: repeat(2, 1fr); gap:14px}
+    .grid3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+
+    /* HERO */
+    .hero{padding:28px 0 14px}
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:18px;
+      align-items:stretch;
+    }
+    .heroCard{
+      position:relative;
+      padding:28px;
+      min-height:390px;
+    }
+    .heroCard:before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        linear-gradient(90deg, rgba(226,0,26,.42), transparent 40%),
+        radial-gradient(420px 180px at 80% 20%, rgba(226,0,26,.30), transparent 60%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .heroCardInner{position:relative; z-index:2; display:grid; gap:12px}
+    .heroLead{max-width:80ch; font-size:16px}
+
+    .pill{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:8px 12px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:13px;
+      width:max-content;
+      max-width:100%;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--pfeifferRed);
+      box-shadow: 0 0 0 4px rgba(226,0,26,.16);
+    }
+    .slogan{
+      font-size:62px;
+      line-height:0.95;
+      letter-spacing:-1.4px;
+      margin:0;
+      word-break:break-word;
+    }
+    .slogan span{
+      color: var(--white);
+      text-shadow: 0 18px 48px rgba(226,0,26,.18);
+    }
+
+    /* Wahlzettel */
+    .ballot{
+      margin-top:8px;
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .checkBox{
+      width:54px; height:54px;
+      border-radius:16px;
+      border:2px solid rgba(255,255,255,.22);
+      background: rgba(0,0,0,.18);
+      display:grid; place-items:center;
+      position:relative;
+      box-shadow: 0 14px 34px rgba(0,0,0,.40);
+      flex:0 0 54px;
+    }
+    .checkBox:after{
+      content:"✓";
+      font-size:30px;
+      font-weight:1000;
+      color: var(--white);
+      transform: rotate(-8deg);
+      text-shadow: 0 16px 30px rgba(226,0,26,.22);
+    }
+    .ballotText b{display:block; font-size:16px}
+    .ballotText span{display:block; font-size:13px; color:var(--muted)}
+
+    .heroSide{display:flex; flex-direction:column; gap:12px; padding:18px}
+
+    /* Wahl Box */
+    .election{
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, rgba(226,0,26,.26), rgba(255,255,255,.04));
+      border-radius: var(--radius);
+      padding:16px;
+      text-align:center;
+    }
+    .election b{display:block; font-size:14px}
+    .countdown{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;
+      justify-content:center;
+    }
+    .cd{
+      width:100%;
+      max-width:260px;
+      padding:12px 12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      text-align:center;
+    }
+    .cd strong{
+      display:block;
+      font-size:34px;
+      line-height:1;
+      letter-spacing:-.5px;
+    }
+    .cd span{display:block; font-size:12px; color:var(--muted); margin-top:6px}
+
+    .btnrow{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      text-decoration:none;
+      padding:12px 14px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      font-weight:1000;
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+      min-width:0;
+    }
+    .btn:hover{
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.22);
+      transform: translateY(-1px);
+    }
+    .btnPrimary{
+      border:1px solid rgba(255,255,255,.14);
+      background: linear-gradient(135deg, var(--pfeifferRed), var(--pfeifferRed2));
+    }
+    .btnGhost{background: rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.16)}
+    .btnCenterWrap{display:flex; justify-content:center; margin-top:14px}
+
+    /* Accordion */
+    details.acc{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      border-radius:18px;
+      overflow:hidden;
+    }
+    details.acc + details.acc{margin-top:12px}
+    details.acc summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      font-weight:1000;
+    }
+    details.acc summary::-webkit-details-marker{display:none}
+    .accTitle{display:flex; flex-direction:column; gap:2px; min-width:0}
+    .accTitle span{color:var(--muted); font-weight:700; font-size:12px}
+    .accChevron{
+      width:34px; height:34px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      flex:0 0 34px;
+      transition: transform .15s ease;
+    }
+    details[open].acc .accChevron{transform: rotate(180deg)}
+    .accBody{padding:0 16px 16px}
+
+    /* Stefan */
+    .leadBox{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:14px;
+      align-items:start;
+    }
+    .leadPhoto{
+      width:140px;
+      height:140px;
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      color:rgba(255,255,255,.86);
+    }
+    .leadPhoto img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+    }
+    .leadHeadline{
+      display:flex; flex-wrap:wrap; gap:10px; align-items:center;
+      margin-bottom:6px;
+    }
+    .leadHeadline b{font-size:18px}
+    .badgeRole{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px;
+      font-weight:900;
+    }
+
+    /* Team */
+    .person{display:flex; gap:14px; align-items:flex-start; min-width:0}
+    .avatar{
+      width:54px; height:54px; border-radius:18px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      flex:0 0 54px;
+      display:grid; place-items:center;
+      color:rgba(255,255,255,.86);
+      font-weight:1000;
+      overflow:hidden;
+    }
+    .avatarImg{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      border-radius:18px;
+    }
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .slot{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px;
+      margin-top:8px;
+      width:max-content;
+      max-width:100%;
+    }
+    .slot i{
+      display:inline-grid; place-items:center;
+      width:18px; height:18px; border-radius:999px;
+      background: rgba(226,0,26,.20);
+      border:1px solid rgba(226,0,26,.40);
+      color:var(--white);
+      font-style:normal;
+      font-weight:1000;
+      font-size:11px;
+    }
+
+    /* Footer */
+    .footer{
+      padding:26px 0 34px;
+      border-top:1px solid rgba(255,255,255,.12);
+      margin-top:24px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footerLinks{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .footerLinks a{
+      text-decoration:none;
+      padding:8px 10px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
+      color:var(--muted);
+    }
+    .footerLinks a:hover{color:var(--text)}
+
+    /* Sticky */
+    .sticky{
+      position:fixed;
+      left:12px; right:12px; bottom:12px;
+      z-index:999;
+    }
+    .stickyInner{
+      max-width: var(--max);
+      margin:0 auto;
+      padding:12px 12px;
+      border-radius: 18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: linear-gradient(135deg, rgba(226,0,26,.35), rgba(255,255,255,.04));
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 55px rgba(0,0,0,.55);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .stickyText{display:flex; flex-direction:column; gap:2px; min-width:0}
+    .stickyText b{font-size:14px}
+    .stickyText span{font-size:12px; color:var(--muted)}
+    .stickyBtns{display:flex; gap:10px; flex-wrap:wrap}
+    .btnSmall{padding:10px 12px; border-radius:14px; font-size:13px}
+
+    /* Mobile */
+    @media (max-width: 980px){
+      .heroGrid{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .grid2{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .slogan{font-size:46px}
+      .heroCard{min-height:auto}
+      .dropdown{top:66px}
+      .leadBox{grid-template-columns: 110px 1fr}
+      .leadPhoto{width:110px;height:110px;border-radius:20px}
+    }
+    @media (max-width: 560px){
+      :root{ --pad:16px; }
+      section{padding:22px 0}
+      h2{font-size:26px}
+      h3{font-size:17px}
+      .hero{padding:22px 0 10px}
+      .heroCard{padding:18px}
+      .heroSide{padding:14px}
+      .slogan{font-size:40px}
+
+      .btnrow .btn{flex:1 1 100%}
+      .actions .btn{flex:1 1 100%}
+
+      .ballot{align-items:flex-start}
+      .checkBox{width:50px; height:50px; flex:0 0 50px}
+      .checkBox:after{font-size:28px}
+
+      .person{gap:12px}
+      .avatar{width:50px; height:50px; border-radius:16px; flex:0 0 50px}
+      .avatarImg{border-radius:16px}
+
+      .stickyBtns{width:100%}
+      .stickyBtns .btn{flex:1 1 100%}
+
+      .leadBox{grid-template-columns: 1fr}
+      .leadPhoto{width:100%; height:220px}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <header class="nav">
+    <div class="wrap">
+      <div class="navInner">
+        <a class="brand" href="#top" aria-label="Start">
+          <div class="logoBox">3</div>
+          <div>
+            <b>Wir für Aßlar</b>
+            <span>Liste 3</span>
+          </div>
+        </a>
+
+        <button class="menuBtn" id="menuBtn" aria-haspopup="true" aria-expanded="false">
+          <span class="menuIcon">☰</span>
+          Menü
+        </button>
+
+        <div class="dropdown" id="dropdown" role="menu" aria-label="Navigation">
+          <div class="dropGroup">
+            <p class="dropTitle">Schnell</p>
+            <a class="dropLink pillCta" href="#wahl">Wahl 17.03</a>
+            <a class="dropLink" href="#team">Team</a>
+          </div>
+
+          <div class="dropGroup">
+            <p class="dropTitle">Inhalte</p>
+            <a class="dropLink" href="#vorstellung">Listenvertreter</a>
+            <a class="dropLink" href="#themen">Wofür wir stehen</a>
+            <a class="dropLink" href="#manifest">Unser Manifest</a>
+            <a class="dropLink" href="#transparenz">Transparenz</a>
+          </div>
+
+          <div class="dropGroup">
+            <p class="dropTitle">Rechtliches</p>
+            <a class="dropLink" href="impressum.html">Impressum</a>
+            <a class="dropLink" href="datenschutz.html">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- BIG LOGO (scrolls away, overlaps header line) -->
+  <div class="topLogo" aria-label="Logo">
+    <img src="assets/img/logo/logo.png" alt="Logo" loading="eager" onerror="this.style.display='none'">
+  </div>
+  <div class="topLogoSpacer" aria-hidden="true"></div>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" id="wahl">
+      <div class="wrap">
+        <div class="heroGrid">
+
+          <div class="card heroCard">
+            <div class="heroCardInner">
+              <div class="pill"><span class="dot"></span><span>Betriebsratswahl am 17.03</span></div>
+
+              <h1 class="slogan"><span>Wir für Aßlar</span></h1>
+
+              <p class="muted heroLead">
+                Liste 3 steht für klare Worte, nachvollziehbare Entscheidungen und echte Mitnahme der Belegschaft.
+                Wichtig ist jetzt nur eins: <b>am 17.03 wählen gehen</b>.
+              </p>
+
+              <div class="ballot">
+                <div class="checkBox" aria-hidden="true"></div>
+                <div class="ballotText">
+                  <b>Liste 3 ankreuzen</b>
+                  <span>Wir für Aßlar. Am 17.03 zählt jede Stimme.</span>
+                </div>
+              </div>
+
+              <div class="btnrow">
+                <a class="btn btnPrimary" href="#team">Team ansehen</a>
+                <a class="btn" href="#themen">Wofür wir stehen</a>
+              </div>
+
+              <p class="muted" style="font-size:12px; margin-top:8px">
+                Private Wahlwerbung zur Betriebsratswahl. Nicht im Auftrag der Unternehmensleitung.
+              </p>
+            </div>
+          </div>
+
+          <div class="card heroSide">
+            <div class="election">
+              <b>Wahltermin: 17.03</b>
+              <div class="muted" style="font-size:13px; margin-top:8px">
+                Noch <b style="color:#fff" id="dDaysInline">--</b> Tage. Geh wählen. Liste 3 ankreuzen. Wir für Aßlar.
+              </div>
+              <div class="countdown" aria-live="polite">
+                <div class="cd">
+                  <strong id="dDays">--</strong>
+                  <span>Tage bis zur Wahl</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="box">
+              <b style="display:block; margin-bottom:6px">Wie erreicht ihr uns</b>
+              <p class="muted" style="font-size:13px">
+                Aktuell ausschließlich persönlich. Wir sind in jeder Abteilung vertreten. Kommt auf uns zu.
+              </p>
+            </div>
+
+            <div class="box">
+              <b style="display:block; margin-bottom:6px">Kurz gesagt</b>
+              <p class="muted" style="font-size:13px">
+                Erfahrung ist gut. Biss ist besser. Wir bringen beides zusammen.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- LISTENVERTRETER -->
+    <section id="vorstellung">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Listenvertreter</h2>
+          <p class="muted">Persönlich. Klar. Ansprechbar.</p>
+        </div>
+
+        <div class="card" style="padding:22px">
+          <div class="box">
+            <div class="leadBox">
+              <div class="leadPhoto" aria-label="Stefan Häbich">
+                <img src="assets/img/team/01-stefan-haebich.png" alt="Stefan Häbich" loading="lazy"
+                     onerror="this.style.display='none'; this.parentElement.textContent='SH';">
+              </div>
+
+              <div style="min-width:0">
+                <div class="leadHeadline">
+                  <b>Stefan Häbich</b>
+                  <span class="badgeRole">Listenvertreter · Liste 3</span>
+                </div>
+
+                <p class="muted">
+                  Liebe Kolleginnen und Kollegen,<br><br>
+                  mein Name ist Stefan Häbich, und ich kandidiere für den Betriebsrat.<br><br>
+                  Warum? Weil mir unsere Arbeit, unsere Qualität und unser Zusammenhalt wirklich am Herzen liegen.<br><br>
+                  Seit vielen Jahren arbeite ich bei Pfeiffer Vacuum und habe dabei eines immer deutlich gespürt:
+                  Wir schaffen nur dann Großes, wenn wir uns gegenseitig unterstützen – in der Produktion, im Service,
+                  in der Verwaltung und auf allen Ebenen.
+                </p>
+
+                <p class="muted" style="margin-top:12px"><b style="color:#fff">Wofür ich stehe</b></p>
+                <ul>
+                  <li><b style="color:#fff">Loyalität gegenüber Kolleginnen und Kollegen</b><br>
+                    Jeder von uns verdient Respekt, Ehrlichkeit und Unterstützung – unabhängig von Abteilung oder Position.</li>
+                  <li><b style="color:#fff">Verantwortung für die Qualität unserer Arbeit</b><br>
+                    Qualität ist unser Gesicht nach außen. Ich spreche Probleme offen an – ohne Schuldzuweisungen, aber mit Lösungen im Blick.</li>
+                  <li><b style="color:#fff">Offenheit und Transparenz</b><br>
+                    Ich möchte sichtbar sein, ansprechbar sein und klar kommunizieren, damit ihr immer wisst, wo ich stehe und was ich für euch tue.</li>
+                  <li><b style="color:#fff">Vermitteln statt spalten</b><br>
+                    Ich sehe mich als Brücke zwischen Mitarbeitenden und Führung. Sachen ruhig, sachlich und respektvoll klären – das ist mein Weg.</li>
+                  <li><b style="color:#fff">Verlässlichkeit und Integrität</b><br>
+                    Ich übernehme Verantwortung für das, was ich selbst beeinflussen kann, und stehe zu meinem Wort.</li>
+                </ul>
+
+                <p class="muted" style="margin-top:12px"><b style="color:#fff">Warum ich kandidiere</b></p>
+                <p class="muted">
+                  Weil ich überzeugt bin, dass echte Veränderungen nur entstehen, wenn man sich aktiv einbringt.
+                  Ich möchte dafür sorgen, dass
+                  unsere Anliegen ernst genommen werden, Probleme nicht unter den Tisch fallen, gute Ideen gehört werden
+                  und wir als Team stark bleiben.
+                </p>
+
+                <p class="muted" style="margin-top:12px">
+                  Ich will sichtbar für euch arbeiten – durch klare Kommunikation, durch Zuhören und durch echtes Engagement.
+                </p>
+
+                <p class="muted" style="margin-top:12px">
+                  Ich bin für euch da. Mit Herz, mit Verstand und mit dem Willen, gemeinsam Lösungen zu finden.<br><br>
+                  Ich würde mich freuen, wenn ihr mir euer Vertrauen schenkt.<br><br>
+                  <b style="color:#fff">Euer Stefan</b>
+                </p>
+              </div>
+            </div>
+
+            <div class="btnrow" style="margin-top:14px">
+              <a class="btn btnPrimary" href="#team">Team Liste 3 ansehen</a>
+              <a class="btn" href="#themen">Wofür wir stehen</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WOFÜR WIR STEHEN -->
+    <section id="themen">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Wofür wir stehen</h2>
+          <p class="muted">Kurze Punkte. Klare Richtung.</p>
+        </div>
+
+        <details class="acc" open>
+          <summary>
+            <div class="accTitle">
+              Arbeitszeit
+              <span>planbar · fair · verlässlich</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Klare Regeln, planbare Abläufe, weniger Überraschungen.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Planbarkeit im Alltag</li>
+              <li style="margin:6px 0">Transparente Abläufe</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Entgelt
+              <span>gerecht · nachvollziehbar</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Verständlich, nachvollziehbar, gleiche Maßstäbe für alle.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Nachvollziehbare Grundlagen</li>
+              <li style="margin:6px 0">Fairness statt Bauchgefühl</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Mitbestimmung
+              <span>mitnehmen · nicht nachträglich informieren</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Nicht erst informieren, wenn alles entschieden ist.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Frühzeitig einbeziehen</li>
+              <li style="margin:6px 0">Rückmeldungen ernst nehmen</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Transparenz
+              <span>klartext · status updates</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Wir erklären Entscheidungen: warum, wie, was als nächstes.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Keine Hinterzimmer Kommunikation</li>
+              <li style="margin:6px 0">Status Updates mit nächstem Schritt</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Multikulturell
+              <span>respekt · zusammenhalt</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Zusammenhalt statt Spaltung. Respekt im Alltag.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Team statt Lager</li>
+              <li style="margin:6px 0">Respekt ist Standard</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Beschäftigungssicherung
+              <span>standort stärken · zukunft</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Arbeitsplätze sichern und Standort Aßlar stärken.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Standort stärken</li>
+              <li style="margin:6px 0">Zukunft im Blick</li>
+            </ul>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Manteltarifvertrag
+              <span>schutz · verständlich machen</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">Tarif sichern und verständlich machen, was gilt und warum.</p>
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Regeln verständlich erklären</li>
+              <li style="margin:6px 0">Tarif als Schutz für alle</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- MANIFEST -->
+    <section id="manifest">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Unser Manifest</h2>
+          <p class="muted">Haltung statt heiße Luft.</p>
+        </div>
+
+        <details class="acc" open>
+          <summary>
+            <div class="accTitle">
+              Unsere Haltung
+              <span>kompetent · konstruktiv · mit biss</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">
+              <b style="color:#fff">Kompetenz</b> bedeutet nachvollziehbare Entscheidungen.<br><br>
+              <b style="color:#fff">Konstruktiv</b> heißt, die Belegschaft mitzunehmen – nicht erst informieren, wenn alles entschieden ist.<br><br>
+              <b style="color:#fff">Erfahrung</b> ist gut. <b style="color:#fff">Biss</b> ist besser.<br><br>
+              Wir bringen beides zusammen: ruhig in der Sache, hartnäckig im Ergebnis.
+            </p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Wie wir arbeiten
+              <span>kurz · klar · verlässlich</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0">Wir sagen frühzeitig, was gerade läuft</li>
+              <li style="margin:6px 0">Wir erklären Entscheidungen in normaler Sprache</li>
+              <li style="margin:6px 0">Wir bleiben dran, bis ein Thema sauber abgeschlossen ist</li>
+              <li style="margin:6px 0">Wir sind ansprechbar: aktuell persönlich</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section id="team">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Team Liste 3</h2>
+          <p class="muted">Standard: erste 12 sichtbar. Dann „Mehr anzeigen“.</p>
+        </div>
+
+        <details class="acc" open>
+          <summary>
+            <div class="accTitle">
+              Team anzeigen
+              <span>mehr anzeigen klappt den Rest auf</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+
+          <div class="accBody">
+            <div class="grid3" id="teamGrid" style="margin-top:14px"></div>
+            <div class="btnCenterWrap">
+              <button class="btn btnGhost" id="toggleMore" type="button">Mehr anzeigen</button>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- TRANSPARENZ -->
+    <section id="transparenz">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Transparenz</h2>
+          <p class="muted">So halten wir euch auf dem Laufenden.</p>
+        </div>
+
+        <div class="grid2">
+          <div class="box">
+            <h3>So halten wir euch wirklich auf dem Laufenden</h3>
+
+            <p class="muted" style="margin-top:10px">
+              Transparenz heißt nicht: viel reden. Transparenz heißt: kurz sagen, was Sache ist.
+              Deshalb bekommt ihr Updates in einem festen Format – immer gleich, immer verständlich.
+            </p>
+
+            <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+              <li style="margin:6px 0"><b style="color:#fff">Thema</b> – worum geht’s</li>
+              <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was ist passiert / was ist geklärt</li>
+              <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was passiert als nächstes</li>
+              <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer ist dran</li>
+            </ul>
+
+            <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+              <b style="display:block">Unser Stil</b>
+              <p class="muted" style="margin-top:6px">
+                Keine Romane. Kein Rumdrucksen. Keine Gerüchte. Sondern klare Updates, die jeder versteht.
+              </p>
+            </div>
+          </div>
+
+          <div class="box">
+            <h3>Beispiel Updates</h3>
+
+            <div style="margin-top:12px; padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+              <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center">
+                <span style="font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color:var(--muted)">Status Update</span>
+                <span style="font-size:12px; color:var(--muted)">00.00.2026</span>
+              </div>
+              <b style="display:block; margin-top:8px">Thema: Beispiel Arbeitszeit</b>
+              <p class="muted" style="margin-top:6px">
+                Stand: Rückmeldungen aus den Abteilungen gesammelt.<br>
+                Nächster Schritt: Klärung und Vorschlag erarbeiten.
+              </p>
+            </div>
+
+            <div style="margin-top:12px; padding:14px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+              <div style="display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; align-items:center">
+                <span style="font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04); color:var(--muted)">Status Update</span>
+                <span style="font-size:12px; color:var(--muted)">00.00.2026</span>
+              </div>
+              <b style="display:block; margin-top:8px">Thema: Beispiel Transparenz</b>
+              <p class="muted" style="margin-top:6px">
+                Stand: Infos zusammengetragen und verständlich aufbereitet.<br>
+                Nächster Schritt: Veröffentlichung als kurzer Überblick.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+        <div class="grid2">
+          <div>
+            <b style="color:var(--text)">Wir für Aßlar. Liste 3.</b>
+            <p style="margin-top:8px">
+              Private Wahlwerbung zur Betriebsratswahl. Nicht im Auftrag der Unternehmensleitung.
+            </p>
+            <div class="footerLinks">
+              <a href="impressum.html">Impressum</a>
+              <a href="datenschutz.html">Datenschutz</a>
+              <a href="#top">Nach oben</a>
+            </div>
+          </div>
+          <div>
+            <b style="color:var(--text)">Kontakt</b>
+            <p style="margin-top:8px">
+              Kontakt aktuell ausschließlich persönlich in den Abteilungen. Kommt auf uns zu.
+            </p>
+            <p class="muted" style="margin-top:10px">
+              Wichtig: <b>Am 17.03 wählen gehen</b>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- STICKY -->
+  <div class="sticky" role="region" aria-label="Wahlhinweis">
+    <div class="stickyInner">
+      <div class="stickyText">
+        <b>Am 17.03 wählen gehen. Wir für Aßlar. Liste 3.</b>
+        <span>Liste 3 ankreuzen. Jede Stimme zählt.</span>
+      </div>
+      <div class="stickyBtns">
+        <a class="btn btnPrimary btnSmall" href="#wahl">Wahl 17.03</a>
+        <a class="btn btnSmall btnGhost" href="#team">Team</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /******************************************************************
+     * SETTINGS
+     ******************************************************************/
+    const SHOW_TEAMS_BUTTONS = false;  // später einfach true
+    const TEAM_VISIBLE_DEFAULT = 12;
+
+    /******************************************************************
+     * DROPDOWN
+     ******************************************************************/
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdown = document.getElementById('dropdown');
+
+    function closeMenu(){
+      dropdown.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+    function openMenu(){
+      dropdown.classList.add('open');
+      menuBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.contains('open') ? closeMenu() : openMenu();
+    });
+
+    document.addEventListener('click', () => closeMenu());
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeMenu(); });
+
+    dropdown.addEventListener('click', (e) => {
+      const a = e.target.closest('a');
+      if(a) closeMenu();
+      e.stopPropagation();
+    });
+
+    /******************************************************************
+     * COUNTDOWN
+     ******************************************************************/
+    const electionDate = new Date(2026, 2, 17, 8, 0, 0);
+    function updateCountdown(){
+      const now = new Date();
+      const diff = electionDate - now;
+
+      const daysEl = document.getElementById('dDays');
+      const inlineEl = document.getElementById('dDaysInline');
+      if(!daysEl || !inlineEl) return;
+
+      if(diff <= 0){
+        daysEl.textContent = "0";
+        inlineEl.textContent = "0";
+        return;
+      }
+
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      daysEl.textContent = String(days);
+      inlineEl.textContent = String(days);
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 60 * 60 * 1000);
+
+    /******************************************************************
+     * TEAM
+     ******************************************************************/
+    const PHOTO_BASE = "assets/img/team/";
+
+    const team = [
+      { slot: 1, first: "Stefan", last: "Haebich", role: "Listenvertreter" },
+      { slot: 2, first: "Angelo", last: "Floris", role: "Mitglied" },
+      { slot: 3, first: "Maik-Daniel", last: "Rueb", role: "Mitglied" },
+      { slot: 4, first: "Maik", last: "Schaefer", role: "Mitglied" },
+      { slot: 5, first: "Devran", last: "Bozkurt", role: "Mitglied" },
+      { slot: 6, first: "Nils", last: "Jung", role: "Mitglied" },
+      { slot: 7, first: "Dominic", last: "Wall", role: "Mitglied" },
+      { slot: 8, first: "Anna-Lena", last: "Wagner", role: "Mitglied" },
+      { slot: 9, first: "Jannik", last: "Stender-Robertz", role: "Mitglied" },
+      { slot: 10, first: "Jaqueline", last: "Moeglich", role: "Mitglied" },
+      { slot: 11, first: "Sinan-Leon", last: "Fuchs", role: "Mitglied" },
+      { slot: 12, first: "Paul", last: "Zerbe", role: "Mitglied" },
+      { slot: 13, first: "Marianna", last: "Aratyan", role: "Mitglied" },
+      { slot: 14, first: "Kenan", last: "Koemuercue", role: "Mitglied" },
+      { slot: 15, first: "Thomas", last: "Cromm", role: "Mitglied" },
+      { slot: 16, first: "Bilal", last: "Oeztuerk", role: "Mitglied" },
+      { slot: 17, first: "Daniel", last: "Kuchenbecker", role: "Mitglied" },
+      { slot: 18, first: "Florian", last: "Bestajovsky", role: "Mitglied" },
+      { slot: 19, first: "Frank", last: "Heinrich", role: "Mitglied" },
+      { slot: 20, first: "Kai", last: "Thielemann", role: "Mitglied" },
+      { slot: 21, first: "Bartholomaeus", last: "Dyba", role: "Mitglied" },
+      { slot: 22, first: "Sebastian", last: "Latta", role: "Mitglied" },
+      { slot: 23, first: "Swen", last: "Barthel", role: "Mitglied" },
+      { slot: 24, first: "Alexander", last: "Dill", role: "Mitglied" },
+      { slot: 25, first: "Daniel", last: "Reiter", role: "Mitglied" },
+      { slot: 26, first: "Peter", last: "Pollok", role: "Mitglied" },
+      { slot: 27, first: "Alexander", last: "Malejko", role: "Mitglied" },
+      { slot: 28, first: "Elena", last: "Emmellius", role: "Mitglied" },
+      { slot: 29, first: "Goran", last: "Tonkovic", role: "Mitglied" },
+      { slot: 30, first: "Cueneyt", last: "Guenes", role: "Mitglied" },
+      { slot: 31, first: "Andreas", last: "Wenner", role: "Mitglied" },
+      { slot: 32, first: "Daniel", last: "Sinsig", role: "Mitglied" },
+    ];
+
+    function cleanSlug(s){
+      return (s || "")
+        .toString()
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "-")
+        .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue").replace(/ß/g,"ss")
+        .replace(/ş/g,"s").replace(/ğ/g,"g").replace(/ı/g,"i").replace(/ç/g,"c")
+        .replace(/[^a-z0-9\-]/g,"-")
+        .replace(/\-+/g,"-")
+        .replace(/^\-|\-$/g,"");
+    }
+    function pad2(n){ return String(n).padStart(2, "0"); }
+
+    function photoPath(person){
+      const slot = pad2(person.slot);
+      const first = cleanSlug(person.first);
+      const last  = cleanSlug(person.last);
+      return `${PHOTO_BASE}${slot}-${first}-${last}.png`;
+    }
+
+    function cleanPartEmail(s){
+      return (s || "")
+        .toString()
+        .trim()
+        .replace(/\s+/g, "")
+        .replace(/Ä/g,"Ae").replace(/Ö/g,"Oe").replace(/Ü/g,"Ue")
+        .replace(/ä/g,"ae").replace(/ö/g,"oe").replace(/ü/g,"ue")
+        .replace(/ß/g,"ss")
+        .replace(/Ş/g,"S").replace(/ş/g,"s")
+        .replace(/Ğ/g,"G").replace(/ğ/g,"g")
+        .replace(/İ/g,"I").replace(/ı/g,"i")
+        .replace(/Ç/g,"C").replace(/ç/g,"c")
+        .replace(/[^A-Za-z0-9.\-]/g,"");
+    }
+    function makeEmail(first, last){
+      return `${cleanPartEmail(first)}.${cleanPartEmail(last)}@pfeiffervacuum.com`;
+    }
+    function initials(first, last){
+      const a = (first || "").trim().charAt(0).toUpperCase();
+      const b = (last || "").trim().charAt(0).toUpperCase();
+      return (a + b) || "L3";
+    }
+    function fullName(first, last){ return `${first} ${last}`.trim(); }
+
+    const grid = document.getElementById('teamGrid');
+    const toggleMoreBtn = document.getElementById('toggleMore');
+    let showAll = false;
+
+    function createTeamCard(person){
+      const name = fullName(person.first, person.last);
+      const photo = photoPath(person);
+
+      let teamsHtml = "";
+      if(SHOW_TEAMS_BUTTONS){
+        const email = makeEmail(person.first, person.last);
+        const teamsLink = `https://teams.microsoft.com/l/chat/0/0?users=${encodeURIComponent(email)}`;
+        teamsHtml = `
+          <div class="actions">
+            <a class="btn btnPrimary" target="_blank" rel="noopener" href="${teamsLink}">Teams Chat starten</a>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="box">
+          <div class="person">
+            <div class="avatar" aria-label="${name}">
+              <img class="avatarImg" src="${photo}" alt="${name}" loading="lazy"
+                   onerror="this.remove(); this.parentElement.textContent='${initials(person.first, person.last)}';">
+            </div>
+
+            <div style="min-width:0">
+              <b style="display:block">${name}</b>
+              <div class="muted" style="font-size:13px; margin-top:2px">${person.role || "Mitglied"}</div>
+              <div class="slot"><i>${person.slot}</i> Listenplatz</div>
+              ${teamsHtml}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderTeam(){
+      if(!grid) return;
+
+      const visible = showAll ? team : team.slice(0, TEAM_VISIBLE_DEFAULT);
+      grid.innerHTML = visible.map(createTeamCard).join("");
+
+      if(toggleMoreBtn){
+        const needsToggle = team.length > TEAM_VISIBLE_DEFAULT;
+        toggleMoreBtn.style.display = needsToggle ? "inline-flex" : "none";
+        toggleMoreBtn.textContent = showAll ? "Weniger anzeigen" : "Mehr anzeigen";
+      }
+    }
+
+    toggleMoreBtn?.addEventListener('click', () => {
+      showAll = !showAll;
+      renderTeam();
+      toggleMoreBtn.scrollIntoView({behavior:"smooth", block:"center"});
+    });
+
+    renderTeam();
+  </script>
+</body>
+</html>
