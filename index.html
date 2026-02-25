@@ -162,12 +162,12 @@
       border:1px solid rgba(255,255,255,.12);
     }
 
-    /* BIG LOGO (nicht anklickbar) */
+    /* BIG LOGO (sichtbar, NICHT anklickbar) */
     .topLogo{
       position: relative;
       display:flex;
       justify-content:center;
-      pointer-events:none;
+      pointer-events:none; /* Logo nicht anklickbar */
       z-index: 30;
       margin-top: 0;
       padding-top: 10px;
@@ -434,10 +434,8 @@
       font-weight:900;
     }
 
-    /* ✅ Klickbar */
-    .imgClick{
-      cursor: zoom-in;
-    }
+    /* Klickbar */
+    .imgClick{ cursor: zoom-in; }
 
     /* Team */
     .person{display:flex; gap:14px; align-items:flex-start; min-width:0}
@@ -555,7 +553,7 @@
     .stickyBtns{display:flex; gap:10px; flex-wrap:wrap}
     .btnSmall{padding:10px 12px; border-radius:14px; font-size:13px}
 
-    /* ✅ LIGHTBOX */
+    /* LIGHTBOX */
     .lb{
       position:fixed;
       inset:0;
@@ -708,9 +706,11 @@
     <section class="hero" id="wahl">
       <div class="wrap">
         <div class="heroGrid">
+
           <div class="card heroCard">
             <div class="heroCardInner">
               <div class="pill"><span class="dot"></span><span>Betriebsratswahl am 17.03</span></div>
+
               <h1 class="slogan"><span>Wir für Aßlar</span></h1>
 
               <p class="muted heroLead">
@@ -767,11 +767,12 @@
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <!-- TEAMVORSTELLUNG (GENAU WIE DEIN BLOCK, NUR: Stefan anklickbar) -->
+    <!-- TEAMVORSTELLUNG (dein Block, nur Stefan anklickbar) -->
     <section id="vorstellung">
       <div class="wrap">
         <div class="splitTitle">
@@ -820,7 +821,6 @@
             <div class="box" style="margin-top:14px">
               <div class="leadBox">
                 <div class="leadPhoto" aria-label="Stefan Häbich">
-                  <!-- ✅ anklickbar -->
                   <img class="imgClick"
                        src="assets/img/team/01-stefan-haebich.png"
                        alt="Stefan Häbich"
@@ -868,6 +868,302 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- WOFÜR WIR STEHEN (wie vorher, vollständig) -->
+    <section id="themen">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Wofür wir stehen</h2>
+          <p class="muted">Kurz. Klar. Für alle verständlich.</p>
+        </div>
+
+        <!-- ARBEITSZEIT -->
+        <details class="acc" open>
+          <summary>
+            <div class="accTitle">
+              Arbeitszeit
+              <span>So machen wir Arbeitszeit planbar.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So halten wir Arbeitszeit wirklich planbar</h3>
+              <p class="muted" style="margin-top:10px">
+                Arbeitszeit heißt: planbar leben können. Änderungen müssen früh, klar und fair kommuniziert werden – damit keiner
+                im letzten Moment überrascht wird.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Plan</b> – was gilt wann</li>
+                <li style="margin:6px 0"><b style="color:#fff">Änderung</b> – was ändert sich, ab wann</li>
+                <li style="margin:6px 0"><b style="color:#fff">Grund</b> – warum ist es nötig</li>
+                <li style="margin:6px 0"><b style="color:#fff">Auswirkung</b> – wen betrifft es</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – wie geht’s weiter</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Keine Überraschungen. Klare Regeln. Frühzeitige Infos – damit Planung möglich bleibt.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- ENTGELT -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Entgelt
+              <span>So machen wir Entgelt nachvollziehbar.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So halten wir Entgelt wirklich nachvollziehbar</h3>
+              <p class="muted" style="margin-top:10px">
+                Entgelt muss fair und nachvollziehbar sein. Gleiche Maßstäbe für alle – statt Bauchgefühl oder Gerüchte.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Thema</b> – worum geht’s (z. B. Zulage, Eingruppierung)</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was ist bekannt / was ist geprüft</li>
+                <li style="margin:6px 0"><b style="color:#fff">Kriterium</b> – nach welchen Regeln wird bewertet</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was passiert als nächstes</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer kümmert sich im Team</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Fair. Nachvollziehbar. Gleiche Maßstäbe – ohne Rumdrucksen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- MITBESTIMMUNG -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Mitbestimmung
+              <span>So nehmen wir die Belegschaft wirklich mit.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So läuft Mitbestimmung bei uns</h3>
+              <p class="muted" style="margin-top:10px">
+                Mitbestimmung heißt: nicht erst informieren, wenn alles entschieden ist. Wir holen Meinungen früh rein – und
+                sagen klar, was daraus wird.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Thema</b> – was steht an</li>
+                <li style="margin:6px 0"><b style="color:#fff">Rückmeldung</b> – was sagt die Belegschaft</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – wo stehen wir gerade</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was kommt als nächstes</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer ist dran</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Erst mitnehmen, dann entscheiden. Klar sagen, was Sache ist.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- TRANSPARENZ -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Transparenz
+              <span>So halten wir euch auf dem Laufenden.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So halten wir euch wirklich auf dem Laufenden</h3>
+              <p class="muted" style="margin-top:10px">
+                Transparenz heißt nicht: viel reden. Transparenz heißt: kurz sagen, was Sache ist.
+                Deshalb bekommt ihr Updates in einem festen Format – immer gleich, immer verständlich.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Thema</b> – worum geht’s</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was ist passiert / was ist geklärt</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was passiert als nächstes</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer ist dran</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Keine Romane. Kein Rumdrucksen. Keine Gerüchte. Sondern klare Updates, die jeder versteht.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- MULTIKULTURELL -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Multikulturell
+              <span>So stärken wir Respekt und Zusammenhalt.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So bleibt Zusammenarbeit respektvoll</h3>
+              <p class="muted" style="margin-top:10px">
+                Wir sind viele Hintergründe – aber ein Standort. Respekt und fairer Umgang sind nicht „nice to have“, sondern Pflicht.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Standard</b> – respektvoller Ton, immer</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – wo es hakt, wird benannt</li>
+                <li style="margin:6px 0"><b style="color:#fff">Lösung</b> – sachlich klären, nicht spalten</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was wird umgesetzt</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer hilft weiter</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Vermitteln statt spalten. Respekt ist Standard – nicht Diskussion.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- BESCHÄFTIGUNGSSICHERUNG -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Beschäftigungssicherung
+              <span>So stärken wir den Standort Aßlar.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So sichern wir Beschäftigung – Schritt für Schritt</h3>
+              <p class="muted" style="margin-top:10px">
+                Beschäftigungssicherung heißt: früh hinschauen, sauber nachhalten, und die richtigen Themen hartnäckig verfolgen.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Thema</b> – was betrifft Arbeitsplätze/Standort</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was ist bekannt, was ist offen</li>
+                <li style="margin:6px 0"><b style="color:#fff">Risiko</b> – wo es kritisch wird</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – was wird konkret getan</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer treibt es im Team</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Klar benennen. Dranbleiben. Ergebnisse liefern – nicht nur reden.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- MANTELTARIFVERTRAG -->
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Manteltarifvertrag
+              <span>So machen wir Regeln verständlich.</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <div class="box" style="margin-top:12px">
+              <h3 style="margin:0">So machen wir den Manteltarifvertrag greifbar</h3>
+              <p class="muted" style="margin-top:10px">
+                Regeln schützen nur, wenn man sie versteht. Wir erklären kurz und klar, was gilt – und was es im Alltag bedeutet.
+              </p>
+
+              <ul style="margin-top:12px; padding-left:18px; color:var(--muted)">
+                <li style="margin:6px 0"><b style="color:#fff">Thema</b> – welcher Abschnitt betrifft dich</li>
+                <li style="margin:6px 0"><b style="color:#fff">Stand</b> – was gilt aktuell</li>
+                <li style="margin:6px 0"><b style="color:#fff">Auswirkung</b> – was bedeutet das konkret</li>
+                <li style="margin:6px 0"><b style="color:#fff">Nächster Schritt</b> – wenn etwas offen ist, wie geht’s weiter</li>
+                <li style="margin:6px 0"><b style="color:#fff">Ansprechpartner</b> – wer hilft beim Einordnen</li>
+              </ul>
+
+              <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                <b style="display:block">Unser Stil</b>
+                <p class="muted" style="margin-top:6px">
+                  Verständlich. Praktisch. Ohne Fachchinesisch – damit jeder es nutzen kann.
+                </p>
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <!-- MANIFEST (wie vorher, vollständig) -->
+    <section id="manifest">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Unser Manifest</h2>
+          <p class="muted">Haltung statt heiße Luft.</p>
+        </div>
+
+        <details class="acc" open>
+          <summary>
+            <div class="accTitle">
+              Unsere Haltung
+              <span>kompetent · konstruktiv · mit biss</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <p class="muted">
+              <b style="color:#fff">Kompetenz</b> bedeutet nachvollziehbare Entscheidungen.<br><br>
+              <b style="color:#fff">Konstruktiv</b> heißt, die Belegschaft mitzunehmen – nicht erst informieren, wenn alles entschieden ist.<br><br>
+              <b style="color:#fff">Erfahrung</b> ist gut. <b style="color:#fff">Biss</b> ist besser.<br><br>
+              Wir bringen beides zusammen: ruhig in der Sache, hartnäckig im Ergebnis.
+            </p>
+          </div>
+        </details>
+
+        <details class="acc">
+          <summary>
+            <div class="accTitle">
+              Wie wir arbeiten
+              <span>kurz · klar · verlässlich</span>
+            </div>
+            <div class="accChevron">⌄</div>
+          </summary>
+          <div class="accBody">
+            <ul>
+              <li>Wir sagen frühzeitig, was gerade läuft</li>
+              <li>Wir erklären Entscheidungen in normaler Sprache</li>
+              <li>Wir bleiben dran, bis ein Thema sauber abgeschlossen ist</li>
+              <li>Wir sind ansprechbar: aktuell persönlich</li>
+            </ul>
+          </div>
+        </details>
       </div>
     </section>
 
@@ -972,6 +1268,20 @@
 
   </main>
 
+  <!-- STICKY -->
+  <div class="sticky" role="region" aria-label="Wahlhinweis">
+    <div class="stickyInner">
+      <div class="stickyText">
+        <b>Am 17.03 wählen gehen. Wir für Aßlar. Liste 3.</b>
+        <span>Liste 3 ankreuzen. Jede Stimme zählt.</span>
+      </div>
+      <div class="stickyBtns">
+        <a class="btn btnPrimary btnSmall" href="#wahl">Wahl 17.03</a>
+        <a class="btn btnSmall btnGhost" href="#team">Team</a>
+      </div>
+    </div>
+  </div>
+
   <!-- LIGHTBOX -->
   <div class="lb" id="lightbox" aria-hidden="true">
     <div class="lbInner" role="dialog" aria-modal="true" aria-label="Bildvorschau">
@@ -984,6 +1294,11 @@
   </div>
 
   <script>
+    /******************************************************************
+     * SETTINGS
+     ******************************************************************/
+    const TEAM_VISIBLE_DEFAULT = 12;
+
     /******************************************************************
      * DROPDOWN
      ******************************************************************/
@@ -1041,7 +1356,6 @@
     /******************************************************************
      * TEAM
      ******************************************************************/
-    const TEAM_VISIBLE_DEFAULT = 12;
     const PHOTO_BASE = "assets/img/team/";
 
     const team = [
@@ -1146,7 +1460,6 @@
         toggleMoreBtn.textContent = showAll ? "Weniger anzeigen" : "Mehr anzeigen";
       }
 
-      // ✅ nach Render: Lightbox-Handler an die neuen Bilder hängen
       bindLightboxClicks();
     }
 
