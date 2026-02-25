@@ -162,12 +162,12 @@
       border:1px solid rgba(255,255,255,.12);
     }
 
-    /* BIG LOGO (sichtbar) */
+    /* BIG LOGO (NICHT klickbar) */
     .topLogo{
       position: relative;
       display:flex;
       justify-content:center;
-      pointer-events:none;
+      pointer-events:none; /* wichtig: nicht anklickbar */
       z-index: 30;
       margin-top: 0;
       padding-top: 10px;
@@ -393,7 +393,7 @@
     .accBody ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
     .accBody li{margin:6px 0}
 
-    /* Lead boxes */
+    /* Lead Box */
     .leadBox{
       display:grid;
       grid-template-columns: 140px 1fr;
@@ -434,22 +434,29 @@
       font-weight:900;
     }
 
-    /* ✅ Stefan Foto groß unter dem Team */
-    .leadPhoto.leadPhotoStefan{
+    /* ✅ GROßE BILDER (wie Logo Größe), anklickbar */
+    .bigImgWrap{
       width:100%;
-      height:320px;              /* Desktop */
       border-radius:24px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.04);
       overflow:hidden;
+      box-shadow: 0 18px 45px rgba(0,0,0,.35);
     }
-    .leadPhoto.leadPhotoStefan img{
+    .bigImg{
       width:100%;
-      height:100%;
-      object-fit:cover;
-      object-position:50% 18%;   /* zeigt mehr vom Körper/Kopf */
+      height:260px;                /* wie Logo */
+      object-fit:contain;          /* komplett sichtbar */
       display:block;
+      filter: drop-shadow(0 26px 48px rgba(0,0,0,.35));
+      background: rgba(0,0,0,.12);
+    }
+    .bigImgClickable{
+      cursor: zoom-in;
+      pointer-events:auto;
     }
 
-    /* Team */
+    /* Team Cards */
     .person{display:flex; gap:14px; align-items:flex-start; min-width:0}
     .avatar{
       width:54px; height:54px; border-radius:18px;
@@ -565,6 +572,55 @@
     .stickyBtns{display:flex; gap:10px; flex-wrap:wrap}
     .btnSmall{padding:10px 12px; border-radius:14px; font-size:13px}
 
+    /* LIGHTBOX */
+    .lb{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.78);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:2000;
+      padding:16px;
+    }
+    .lb.open{display:flex}
+    .lbInner{
+      width:min(1100px, 96vw);
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(7,7,11,.96);
+      box-shadow: 0 18px 55px rgba(0,0,0,.70);
+      overflow:hidden;
+      position:relative;
+    }
+    .lbTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:10px 12px;
+      border-bottom:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+    }
+    .lbTitle{font-weight:900; font-size:13px; color:rgba(255,255,255,.86)}
+    .lbClose{
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.05);
+      color:var(--text);
+      border-radius:14px;
+      padding:8px 10px;
+      cursor:pointer;
+      font-weight:1000;
+    }
+    .lbClose:hover{background: rgba(255,255,255,.08)}
+    .lbImg{
+      width:100%;
+      height:min(78vh, 820px);
+      object-fit:contain;
+      display:block;
+      background: rgba(0,0,0,.18);
+    }
+
     /* Mobile */
     @media (max-width: 980px){
       .heroGrid{grid-template-columns:1fr}
@@ -581,7 +637,7 @@
       .topLogo{ padding-top: 8px; }
       .topLogoSpacer{ height: 6px; }
 
-      .leadPhoto.leadPhotoStefan{ height:280px; }
+      .bigImg{ height:200px; }
     }
     @media (max-width: 560px){
       :root{ --pad:16px; }
@@ -613,8 +669,7 @@
       .topLogo{ padding-top: 6px; }
       .topLogoSpacer{ height: 6px; }
 
-      .leadPhoto.leadPhotoStefan{ height:360px; }
-      .leadPhoto.leadPhotoStefan img{ object-position:50% 14%; }
+      .bigImg{ height:150px; }
     }
   </style>
 </head>
@@ -647,7 +702,7 @@
 
           <div class="dropGroup">
             <p class="dropTitle">Inhalte</p>
-            <a class="dropLink" href="#vorstellung">Teamvorstellung</a>
+            <a class="dropLink" href="#vorstellung">Listenvertreter</a>
             <a class="dropLink" href="#themen">Wofür wir stehen</a>
             <a class="dropLink" href="#manifest">Unser Manifest</a>
           </div>
@@ -662,7 +717,7 @@
     </div>
   </header>
 
-  <!-- BIG LOGO -->
+  <!-- BIG LOGO (nicht anklickbar) -->
   <div class="topLogo" aria-label="Logo">
     <img src="assets/img/logo/logo.png" alt="Logo" loading="eager" onerror="this.style.display='none'">
   </div>
@@ -740,91 +795,74 @@
       </div>
     </section>
 
-    <!-- TEAMVORSTELLUNG -->
+    <!-- LISTENVERTRETER (Stefan oben, Bild groß wie Logo + anklickbar) -->
     <section id="vorstellung">
       <div class="wrap">
         <div class="splitTitle">
-          <h2>Team: Wir für Aßlar</h2>
-          <p class="muted">Gemeinsam. Klar. Ansprechbar.</p>
+          <h2>Listenvertreter</h2>
+          <p class="muted">Persönlich. Klar. Ansprechbar.</p>
         </div>
 
         <div class="card" style="padding:22px">
           <div class="box">
-            <div class="leadBox">
-              <!-- TEAM FOTO -->
-              <div class="leadPhoto" aria-label="Teamfoto Wir für Aßlar">
-                <img src="assets/img/team/team.png" alt="Teamfoto Wir für Aßlar" loading="lazy"
-                     onerror="this.style.display='none'; this.parentElement.textContent='TEAM';">
-              </div>
 
-              <div style="min-width:0">
-                <div class="leadHeadline">
-                  <b>Wir für Aßlar</b>
-                  <span class="badgeRole">Team · Liste 3</span>
-                </div>
-
-                <p class="muted">
-                  Wir sind <b>Wir für Aßlar</b> und treten <b>geschlossen als Team Liste 3</b> zur Betriebsratswahl an.<br><br>
-                  Warum? Weil uns unsere Arbeit, unsere Qualität und unser Zusammenhalt wirklich wichtig sind.<br><br>
-                  Viele von uns arbeiten seit Jahren am Standort Aßlar. Wir wissen, wo es gut läuft – und wo es hakt.
-                  Genau deshalb wollen wir Themen nicht zerreden, sondern sauber aufnehmen, nachhalten und Ergebnisse liefern.
-                </p>
-
-                <!-- TEAM MISSION BOX -->
-                <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
-                  <b style="display:block">Team Mission</b>
-                  <p class="muted" style="margin-top:6px">
-                    Wir stehen für einen Betriebsrat, der verständlich kommuniziert, konsequent nachhält und die Belegschaft wirklich mitnimmt.
-                  </p>
-                  <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted)">
-                    <li><b style="color:#fff">Kurz & klar</b> – Updates im festen Format, ohne Rumdrucksen</li>
-                    <li><b style="color:#fff">Nah dran</b> – wir sind in den Abteilungen ansprechbar</li>
-                    <li><b style="color:#fff">Ergebnisse</b> – dranbleiben, bis ein Thema sauber abgeschlossen ist</li>
-                  </ul>
-                </div>
-              </div>
+            <!-- ✅ Stefan Foto groß (wie Logo) + anklickbar -->
+            <div class="bigImgWrap" style="margin-bottom:14px">
+              <img
+                class="bigImg bigImgClickable"
+                src="assets/img/team/01-stefan-haebich.png"
+                alt="Stefan Häbich"
+                loading="lazy"
+                data-lightbox="Stefan Häbich"
+                onerror="this.style.display='none';"
+              >
             </div>
 
-            <!-- Stefan Block (Foto groß, damit er komplett wirkt) -->
-            <div class="box" style="margin-top:14px">
-              <div class="leadBox">
-                <div class="leadPhoto leadPhotoStefan" aria-label="Stefan Häbich">
-                  <img src="assets/img/team/01-stefan-haebich.png" alt="Stefan Häbich" loading="lazy"
-                       onerror="this.style.display='none'; this.parentElement.textContent='SH';">
-                </div>
-
-                <div style="min-width:0">
-                  <div class="leadHeadline">
-                    <b>Stefan Häbich</b>
-                    <span class="badgeRole">Sprecher im Team · Liste 3</span>
-                  </div>
-
-                  <p class="muted">
-                    Ich bin Stefan – und ich stehe nicht allein, sondern <b>mit einem starken Team</b> hinter mir.
-                    Wir treten gemeinsam an, weil wir überzeugt sind, dass man Themen nur gewinnt, wenn man sie als Team sauber vorbereitet,
-                    klar kommuniziert und konsequent nachhält.
-                  </p>
-
-                  <p class="muted" style="margin-top:12px"><b style="color:#fff">Wofür wir stehen</b></p>
-                  <ul>
-                    <li><b style="color:#fff">Loyalität gegenüber Kolleginnen und Kollegen</b><br>
-                      Respekt, Ehrlichkeit und Unterstützung – unabhängig von Abteilung oder Position.</li>
-                    <li><b style="color:#fff">Verantwortung für die Qualität unserer Arbeit</b><br>
-                      Probleme offen ansprechen – ohne Schuldzuweisungen, aber mit Lösungen im Blick.</li>
-                    <li><b style="color:#fff">Offenheit und Transparenz</b><br>
-                      Sichtbar sein, ansprechbar sein, klar kommunizieren – damit ihr immer wisst, was läuft.</li>
-                    <li><b style="color:#fff">Vermitteln statt spalten</b><br>
-                      Ruhig in der Sache, respektvoll im Umgang – Lösungen statt Lagerbildung.</li>
-                    <li><b style="color:#fff">Verlässlichkeit und Integrität</b><br>
-                      Verantwortung übernehmen und zu Zusagen stehen – klar und nachvollziehbar.</li>
-                  </ul>
-
-                  <p class="muted" style="margin-top:12px">
-                    <b style="color:#fff">Euer Team Liste 3</b>
-                  </p>
-                </div>
-              </div>
+            <div class="leadHeadline">
+              <b>Stefan Häbich</b>
+              <span class="badgeRole">Listenvertreter · Liste 3</span>
             </div>
+
+            <p class="muted">
+              Liebe Kolleginnen und Kollegen,<br><br>
+              mein Name ist Stefan Häbich, und ich kandidiere für den Betriebsrat.<br><br>
+              Warum? Weil mir unsere Arbeit, unsere Qualität und unser Zusammenhalt wirklich am Herzen liegen.<br><br>
+              Seit vielen Jahren arbeite ich bei Pfeiffer Vacuum und habe dabei eines immer deutlich gespürt:
+              Wir schaffen nur dann Großes, wenn wir uns gegenseitig unterstützen – in der Produktion, im Service,
+              in der Verwaltung und auf allen Ebenen.
+            </p>
+
+            <p class="muted" style="margin-top:12px"><b style="color:#fff">Wofür ich stehe</b></p>
+            <ul>
+              <li><b style="color:#fff">Loyalität gegenüber Kolleginnen und Kollegen</b><br>
+                Jeder von uns verdient Respekt, Ehrlichkeit und Unterstützung – unabhängig von Abteilung oder Position.</li>
+              <li><b style="color:#fff">Verantwortung für die Qualität unserer Arbeit</b><br>
+                Qualität ist unser Gesicht nach außen. Ich spreche Probleme offen an – ohne Schuldzuweisungen, aber mit Lösungen im Blick.</li>
+              <li><b style="color:#fff">Offenheit und Transparenz</b><br>
+                Ich möchte sichtbar sein, ansprechbar sein und klar kommunizieren, damit ihr immer wisst, wo ich stehe und was ich für euch tue.</li>
+              <li><b style="color:#fff">Vermitteln statt spalten</b><br>
+                Ich sehe mich als Brücke zwischen Mitarbeitenden und Führung. Sachen ruhig, sachlich und respektvoll klären – das ist mein Weg.</li>
+              <li><b style="color:#fff">Verlässlichkeit und Integrität</b><br>
+                Ich übernehme Verantwortung für das, was ich selbst beeinflussen kann, und stehe zu meinem Wort.</li>
+            </ul>
+
+            <p class="muted" style="margin-top:12px"><b style="color:#fff">Warum ich kandidiere</b></p>
+            <p class="muted">
+              Weil ich überzeugt bin, dass echte Veränderungen nur entstehen, wenn man sich aktiv einbringt.
+              Ich möchte dafür sorgen, dass
+              unsere Anliegen ernst genommen werden, Probleme nicht unter den Tisch fallen, gute Ideen gehört werden
+              und wir als Team stark bleiben.
+            </p>
+
+            <p class="muted" style="margin-top:12px">
+              Ich will sichtbar für euch arbeiten – durch klare Kommunikation, durch Zuhören und durch echtes Engagement.
+            </p>
+
+            <p class="muted" style="margin-top:12px">
+              Ich bin für euch da. Mit Herz, mit Verstand und mit dem Willen, gemeinsam Lösungen zu finden.<br><br>
+              Ich würde mich freuen, wenn ihr mir euer Vertrauen schenkt.<br><br>
+              <b style="color:#fff">Euer Stefan</b>
+            </p>
 
             <div class="btnrow" style="margin-top:14px">
               <a class="btn btnPrimary" href="#team">Team Liste 3 ansehen</a>
@@ -843,7 +881,6 @@
           <p class="muted">Kurz. Klar. Für alle verständlich.</p>
         </div>
 
-        <!-- ARBEITSZEIT -->
         <details class="acc" open>
           <summary>
             <div class="accTitle">
@@ -878,7 +915,6 @@
           </div>
         </details>
 
-        <!-- ENTGELT -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -912,7 +948,6 @@
           </div>
         </details>
 
-        <!-- MITBESTIMMUNG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -947,7 +982,6 @@
           </div>
         </details>
 
-        <!-- TRANSPARENZ -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -981,7 +1015,6 @@
           </div>
         </details>
 
-        <!-- MULTIKULTURELL -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1015,7 +1048,6 @@
           </div>
         </details>
 
-        <!-- BESCHÄFTIGUNGSSICHERUNG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1049,7 +1081,6 @@
           </div>
         </details>
 
-        <!-- MANTELTARIFVERTRAG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1131,7 +1162,7 @@
       </div>
     </section>
 
-    <!-- TEAM -->
+    <!-- TEAM (Teamfoto unten groß wie Logo + anklickbar) -->
     <section id="team">
       <div class="wrap">
         <div class="splitTitle">
@@ -1149,6 +1180,19 @@
           </summary>
 
           <div class="accBody">
+
+            <!-- ✅ Teamfoto unten groß (wie Logo) + anklickbar -->
+            <div class="bigImgWrap" style="margin-top:14px">
+              <img
+                class="bigImg bigImgClickable"
+                src="assets/img/team/team.png"
+                alt="Teamfoto Liste 3"
+                loading="lazy"
+                data-lightbox="Team Liste 3"
+                onerror="this.style.display='none'; this.parentElement.style.display='none';"
+              >
+            </div>
+
             <div class="grid3" id="teamGrid" style="margin-top:14px"></div>
 
             <div class="btnCenterWrap">
@@ -1243,6 +1287,17 @@
         <a class="btn btnPrimary btnSmall" href="#wahl">Wahl 17.03</a>
         <a class="btn btnSmall btnGhost" href="#team">Team</a>
       </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lb" id="lightbox" aria-hidden="true">
+    <div class="lbInner" role="dialog" aria-modal="true" aria-label="Bildvorschau">
+      <div class="lbTop">
+        <div class="lbTitle" id="lbTitle">Bild</div>
+        <button class="lbClose" id="lbClose" type="button">Schließen ✕</button>
+      </div>
+      <img class="lbImg" id="lbImg" alt="">
     </div>
   </div>
 
@@ -1420,6 +1475,44 @@
     });
 
     renderTeam();
+
+    /******************************************************************
+     * LIGHTBOX (nur Stefan + Teamfoto, Logo bleibt nicht anklickbar)
+     ******************************************************************/
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbClose = document.getElementById('lbClose');
+
+    function openLightbox(src, title){
+      lbImg.src = src;
+      lbImg.alt = title || "Bild";
+      lbTitle.textContent = title || "Bild";
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox(){
+      lb.classList.remove('open');
+      lb.setAttribute('aria-hidden','true');
+      lbImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-lightbox]').forEach(img => {
+      img.addEventListener('click', () => {
+        const title = img.getAttribute('data-lightbox') || 'Bild';
+        openLightbox(img.currentSrc || img.src, title);
+      });
+    });
+
+    lbClose.addEventListener('click', closeLightbox);
+    lb.addEventListener('click', (e) => {
+      if(e.target === lb) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && lb.classList.contains('open')) closeLightbox();
+    });
   </script>
 </body>
 </html>
