@@ -393,7 +393,7 @@
     .accBody ul{margin:10px 0 0; padding-left:18px; color:var(--muted)}
     .accBody li{margin:6px 0}
 
-    /* Stefan */
+    /* Lead boxes */
     .leadBox{
       display:grid;
       grid-template-columns: 140px 1fr;
@@ -432,6 +432,21 @@
       color:var(--muted);
       font-size:12px;
       font-weight:900;
+    }
+
+    /* ✅ Stefan Foto groß unter dem Team */
+    .leadPhoto.leadPhotoStefan{
+      width:100%;
+      height:320px;              /* Desktop */
+      border-radius:24px;
+      overflow:hidden;
+    }
+    .leadPhoto.leadPhotoStefan img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:50% 18%;   /* zeigt mehr vom Körper/Kopf */
+      display:block;
     }
 
     /* Team */
@@ -565,6 +580,8 @@
       .topLogo img{ height:200px; }
       .topLogo{ padding-top: 8px; }
       .topLogoSpacer{ height: 6px; }
+
+      .leadPhoto.leadPhotoStefan{ height:280px; }
     }
     @media (max-width: 560px){
       :root{ --pad:16px; }
@@ -595,6 +612,9 @@
       .topLogo img{ height:150px; }
       .topLogo{ padding-top: 6px; }
       .topLogoSpacer{ height: 6px; }
+
+      .leadPhoto.leadPhotoStefan{ height:360px; }
+      .leadPhoto.leadPhotoStefan img{ object-position:50% 14%; }
     }
   </style>
 </head>
@@ -720,102 +740,102 @@
       </div>
     </section>
 
-<!-- TEAMVORSTELLUNG (Team-Fokus + Teamfoto team.png) -->
-<section id="vorstellung">
-  <div class="wrap">
-    <div class="splitTitle">
-      <h2>Team: Wir für Aßlar</h2>
-      <p class="muted">Gemeinsam. Klar. Ansprechbar.</p>
-    </div>
-
-    <div class="card" style="padding:22px">
-      <div class="box">
-        <div class="leadBox">
-          <!-- TEAM FOTO: liegt im selben Ordner wie die Einzelbilder -->
-          <div class="leadPhoto" aria-label="Teamfoto Wir für Aßlar">
-            <img src="assets/img/team/team.png" alt="Teamfoto Wir für Aßlar" loading="lazy"
-                 onerror="this.style.display='none'; this.parentElement.textContent='TEAM';">
-          </div>
-
-          <div style="min-width:0">
-            <div class="leadHeadline">
-              <b>Wir für Aßlar</b>
-              <span class="badgeRole">Team · Liste 3</span>
-            </div>
-
-            <p class="muted">
-              Wir sind <b>Wir für Aßlar</b> und treten <b>geschlossen als Team Liste 3</b> zur Betriebsratswahl an.<br><br>
-              Warum? Weil uns unsere Arbeit, unsere Qualität und unser Zusammenhalt wirklich wichtig sind.<br><br>
-              Viele von uns arbeiten seit Jahren am Standort Aßlar. Wir wissen, wo es gut läuft – und wo es hakt.
-              Genau deshalb wollen wir Themen nicht zerreden, sondern sauber aufnehmen, nachhalten und Ergebnisse liefern.
-            </p>
-
-            <!-- TEAM MISSION BOX -->
-            <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
-              <b style="display:block">Team Mission</b>
-              <p class="muted" style="margin-top:6px">
-                Wir stehen für einen Betriebsrat, der verständlich kommuniziert, konsequent nachhält und die Belegschaft wirklich mitnimmt.
-              </p>
-              <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted)">
-                <li><b style="color:#fff">Kurz & klar</b> – Updates im festen Format, ohne Rumdrucksen</li>
-                <li><b style="color:#fff">Nah dran</b> – wir sind in den Abteilungen ansprechbar</li>
-                <li><b style="color:#fff">Ergebnisse</b> – dranbleiben, bis ein Thema sauber abgeschlossen ist</li>
-              </ul>
-            </div>
-          </div>
+    <!-- TEAMVORSTELLUNG -->
+    <section id="vorstellung">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Team: Wir für Aßlar</h2>
+          <p class="muted">Gemeinsam. Klar. Ansprechbar.</p>
         </div>
 
-        <!-- Stefan bleibt drin (als Team-Gesicht / Sprecher) -->
-        <div class="box" style="margin-top:14px">
-          <div class="leadBox">
-            <div class="leadPhoto" aria-label="Stefan Häbich">
-              <img src="assets/img/team/01-stefan-haebich.png" alt="Stefan Häbich" loading="lazy"
-                   onerror="this.style.display='none'; this.parentElement.textContent='SH';">
-            </div>
-
-            <div style="min-width:0">
-              <div class="leadHeadline">
-                <b>Stefan Häbich</b>
-                <span class="badgeRole">Sprecher im Team · Liste 3</span>
+        <div class="card" style="padding:22px">
+          <div class="box">
+            <div class="leadBox">
+              <!-- TEAM FOTO -->
+              <div class="leadPhoto" aria-label="Teamfoto Wir für Aßlar">
+                <img src="assets/img/team/team.png" alt="Teamfoto Wir für Aßlar" loading="lazy"
+                     onerror="this.style.display='none'; this.parentElement.textContent='TEAM';">
               </div>
 
-              <p class="muted">
-                Ich bin Stefan – und ich stehe nicht allein, sondern <b>mit einem starken Team</b> hinter mir.
-                Wir treten gemeinsam an, weil wir überzeugt sind, dass man Themen nur gewinnt, wenn man sie als Team sauber vorbereitet,
-                klar kommuniziert und konsequent nachhält.
-              </p>
+              <div style="min-width:0">
+                <div class="leadHeadline">
+                  <b>Wir für Aßlar</b>
+                  <span class="badgeRole">Team · Liste 3</span>
+                </div>
 
-              <p class="muted" style="margin-top:12px"><b style="color:#fff">Wofür wir stehen</b></p>
-              <ul>
-                <li><b style="color:#fff">Loyalität gegenüber Kolleginnen und Kollegen</b><br>
-                  Respekt, Ehrlichkeit und Unterstützung – unabhängig von Abteilung oder Position.</li>
-                <li><b style="color:#fff">Verantwortung für die Qualität unserer Arbeit</b><br>
-                  Probleme offen ansprechen – ohne Schuldzuweisungen, aber mit Lösungen im Blick.</li>
-                <li><b style="color:#fff">Offenheit und Transparenz</b><br>
-                  Sichtbar sein, ansprechbar sein, klar kommunizieren – damit ihr immer wisst, was läuft.</li>
-                <li><b style="color:#fff">Vermitteln statt spalten</b><br>
-                  Ruhig in der Sache, respektvoll im Umgang – Lösungen statt Lagerbildung.</li>
-                <li><b style="color:#fff">Verlässlichkeit und Integrität</b><br>
-                  Verantwortung übernehmen und zu Zusagen stehen – klar und nachvollziehbar.</li>
-              </ul>
+                <p class="muted">
+                  Wir sind <b>Wir für Aßlar</b> und treten <b>geschlossen als Team Liste 3</b> zur Betriebsratswahl an.<br><br>
+                  Warum? Weil uns unsere Arbeit, unsere Qualität und unser Zusammenhalt wirklich wichtig sind.<br><br>
+                  Viele von uns arbeiten seit Jahren am Standort Aßlar. Wir wissen, wo es gut läuft – und wo es hakt.
+                  Genau deshalb wollen wir Themen nicht zerreden, sondern sauber aufnehmen, nachhalten und Ergebnisse liefern.
+                </p>
 
-              <p class="muted" style="margin-top:12px">
-                <b style="color:#fff">Euer Team Liste 3</b>
-              </p>
+                <!-- TEAM MISSION BOX -->
+                <div style="margin-top:12px; padding:12px; border-radius:16px; border:1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);">
+                  <b style="display:block">Team Mission</b>
+                  <p class="muted" style="margin-top:6px">
+                    Wir stehen für einen Betriebsrat, der verständlich kommuniziert, konsequent nachhält und die Belegschaft wirklich mitnimmt.
+                  </p>
+                  <ul style="margin:10px 0 0; padding-left:18px; color:var(--muted)">
+                    <li><b style="color:#fff">Kurz & klar</b> – Updates im festen Format, ohne Rumdrucksen</li>
+                    <li><b style="color:#fff">Nah dran</b> – wir sind in den Abteilungen ansprechbar</li>
+                    <li><b style="color:#fff">Ergebnisse</b> – dranbleiben, bis ein Thema sauber abgeschlossen ist</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stefan Block (Foto groß, damit er komplett wirkt) -->
+            <div class="box" style="margin-top:14px">
+              <div class="leadBox">
+                <div class="leadPhoto leadPhotoStefan" aria-label="Stefan Häbich">
+                  <img src="assets/img/team/01-stefan-haebich.png" alt="Stefan Häbich" loading="lazy"
+                       onerror="this.style.display='none'; this.parentElement.textContent='SH';">
+                </div>
+
+                <div style="min-width:0">
+                  <div class="leadHeadline">
+                    <b>Stefan Häbich</b>
+                    <span class="badgeRole">Sprecher im Team · Liste 3</span>
+                  </div>
+
+                  <p class="muted">
+                    Ich bin Stefan – und ich stehe nicht allein, sondern <b>mit einem starken Team</b> hinter mir.
+                    Wir treten gemeinsam an, weil wir überzeugt sind, dass man Themen nur gewinnt, wenn man sie als Team sauber vorbereitet,
+                    klar kommuniziert und konsequent nachhält.
+                  </p>
+
+                  <p class="muted" style="margin-top:12px"><b style="color:#fff">Wofür wir stehen</b></p>
+                  <ul>
+                    <li><b style="color:#fff">Loyalität gegenüber Kolleginnen und Kollegen</b><br>
+                      Respekt, Ehrlichkeit und Unterstützung – unabhängig von Abteilung oder Position.</li>
+                    <li><b style="color:#fff">Verantwortung für die Qualität unserer Arbeit</b><br>
+                      Probleme offen ansprechen – ohne Schuldzuweisungen, aber mit Lösungen im Blick.</li>
+                    <li><b style="color:#fff">Offenheit und Transparenz</b><br>
+                      Sichtbar sein, ansprechbar sein, klar kommunizieren – damit ihr immer wisst, was läuft.</li>
+                    <li><b style="color:#fff">Vermitteln statt spalten</b><br>
+                      Ruhig in der Sache, respektvoll im Umgang – Lösungen statt Lagerbildung.</li>
+                    <li><b style="color:#fff">Verlässlichkeit und Integrität</b><br>
+                      Verantwortung übernehmen und zu Zusagen stehen – klar und nachvollziehbar.</li>
+                  </ul>
+
+                  <p class="muted" style="margin-top:12px">
+                    <b style="color:#fff">Euer Team Liste 3</b>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="btnrow" style="margin-top:14px">
+              <a class="btn btnPrimary" href="#team">Team Liste 3 ansehen</a>
+              <a class="btn" href="#themen">Wofür wir stehen</a>
             </div>
           </div>
         </div>
-
-        <div class="btnrow" style="margin-top:14px">
-          <a class="btn btnPrimary" href="#team">Team Liste 3 ansehen</a>
-          <a class="btn" href="#themen">Wofür wir stehen</a>
-        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-    <!-- WOFÜR WIR STEHEN (inkl. Transparenz) -->
+    <!-- WOFÜR WIR STEHEN -->
     <section id="themen">
       <div class="wrap">
         <div class="splitTitle">
