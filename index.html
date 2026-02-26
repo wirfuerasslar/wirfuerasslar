@@ -1327,32 +1327,34 @@
       if(a) closeMenu();
       e.stopPropagation();
     });
+    
+  /******************************************************************
+   * COUNTDOWN (nur Tage) – fix auf Deutschland (Europe/Berlin) ab 00:00
+   ******************************************************************/
+  (function () {
+    const daysEl = document.getElementById("dDays");
+    if (!daysEl) return;
 
-    /******************************************************************
-     * COUNTDOWN (nur Tage)
-     ******************************************************************/
-    (function () {
-      const daysEl = document.getElementById("dDays");
-      if (!daysEl) return;
+    // Wahl: 17.03.2026 00:00 Uhr Deutschland (CET = UTC+1, da März -> noch keine Sommerzeit)
+    const electionUtc = Date.UTC(2026, 2, 16, 23, 0, 0); // 17.03 00:00 CET = 16.03 23:00 UTC
 
-      const electionDate = new Date(2026, 2, 17, 8, 0, 0); // 17.03.2026
+    function updateCountdown() {
+      const nowUtc = Date.now();
+      const diff = electionUtc - nowUtc;
 
-      function updateCountdown() {
-        const now = new Date();
-        const diff = electionDate.getTime() - now.getTime();
-
-        if (diff <= 0) {
-          daysEl.textContent = "0";
-          return;
-        }
-        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-        daysEl.textContent = String(days);
+      if (diff <= 0) {
+        daysEl.textContent = "0";
+        return;
       }
 
-      updateCountdown();
-      setInterval(updateCountdown, 60 * 60 * 1000);
-    })();
+      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      daysEl.textContent = String(days);
+    }
 
+    updateCountdown();
+    setInterval(updateCountdown, 60 * 60 * 1000);
+  })();
+    
     /******************************************************************
      * TEAM
      ******************************************************************/
