@@ -167,7 +167,7 @@
       position: relative;
       display:flex;
       justify-content:center;
-      pointer-events:none; /* Logo nicht anklickbar */
+      pointer-events:none;
       z-index: 30;
       margin-top: 0;
       padding-top: 10px;
@@ -502,6 +502,18 @@
       color:var(--muted);
     }
 
+    /* Aushang Bild */
+    .aushangImg{
+      width:100%;
+      max-width:900px;
+      margin-top:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.18);
+      display:block;
+      object-fit:contain;
+    }
+
     /* Footer */
     .footer{
       padding:26px 0 34px;
@@ -673,8 +685,8 @@
           <div class="dropGroup">
             <p class="dropTitle">Schnell</p>
             <a class="dropLink pillCta" href="#wahl">Wahl 17.03</a>
-            <a class="dropLink" href="#team">Team</a>
             <a class="dropLink" href="#updates">Updates</a>
+            <a class="dropLink" href="#team">Team</a>
           </div>
 
           <div class="dropGroup">
@@ -768,6 +780,69 @@
             </div>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- UPDATES (nach oben gezogen + echtes erstes Update, Beispiele entfernt) -->
+    <section id="updates">
+      <div class="wrap">
+        <div class="splitTitle">
+          <h2>Updates</h2>
+          <p class="muted">Aktuelle Infos kurz und verständlich.</p>
+        </div>
+
+        <div class="card" style="padding:22px">
+          <div class="box">
+            <h3 style="margin:0">Aktuelles Update</h3>
+            <p class="muted" style="margin-top:10px">
+              Sobald es Neuigkeiten gibt, veröffentlichen wir sie hier in kurzer, verständlicher Form.
+            </p>
+
+            <div class="updateCard">
+              <div class="updateTop">
+                <span class="badge">Status Update</span>
+                <span class="muted" style="font-size:12px">03.03.2026</span>
+              </div>
+              <b style="display:block; margin-top:8px">Betriebsratswahl – Deine Stimme zählt!</b>
+              <p class="muted" style="margin-top:6px">
+                Nicht alle Kolleginnen und Kollegen sind am Wahltag im Betrieb.<br>
+                Wenn du im Urlaub bist, krankgeschrieben oder aus anderen Gründen nicht vor Ort sein kannst, gibt es die Möglichkeit der <b>Briefwahl</b>.<br>
+                So kannst du trotzdem ganz unkompliziert deine Stimme abgeben.<br><br>
+
+                Falls du nicht genau weißt, wie die Briefwahl funktioniert oder wie du die Unterlagen beantragen kannst, sprich uns gerne an.<br>
+                Wir unterstützen dich bei Fragen zum Ablauf und begleiten dich auf Wunsch auch ins <b>Wahlbüro</b> – natürlich völlig unverbindlich.<br><br>
+
+                Wichtig ist uns vor allem eines:<br>
+                <b>Geh wählen. Nutze dein Recht. Jede Stimme zählt.</b><br><br>
+
+                Auch bei allgemeinen Fragen zur Betriebsratswahl oder zur Listenwahl stehen wir dir jederzeit kollegial und offen zur Verfügung.
+              </p>
+            </div>
+
+            <!-- Aktueller Aushang -->
+            <div class="updateCard">
+              <div class="updateTop">
+                <span class="badge">Aktueller Aushang</span>
+                <span class="muted" style="font-size:12px">Schwarzes Brett</span>
+              </div>
+              <b style="display:block; margin-top:8px">Aktueller Aushang</b>
+
+              <!-- Datei hier ablegen/benennen: assets/img/team/aushang.png -->
+              <img
+                class="aushangImg imgClick"
+                src="assets/img/team/aushang.png"
+                alt="Aktueller Aushang am Schwarzen Brett"
+                loading="lazy"
+                data-lightbox="Aktueller Aushang"
+                onerror="this.style.display='none';"
+              >
+              <p class="muted" style="margin-top:10px; font-size:13px">
+                Bild vom aktuellen Aushang am Schwarzen Brett.
+              </p>
+            </div>
+
+          </div>
         </div>
       </div>
     </section>
@@ -871,7 +946,7 @@
       </div>
     </section>
 
-    <!-- WOFÜR WIR STEHEN (wie vorher, vollständig) -->
+    <!-- WOFÜR WIR STEHEN (unverändert) -->
     <section id="themen">
       <div class="wrap">
         <div class="splitTitle">
@@ -879,7 +954,6 @@
           <p class="muted">Kurz. Klar. Für alle verständlich.</p>
         </div>
 
-        <!-- ARBEITSZEIT -->
         <details class="acc" open>
           <summary>
             <div class="accTitle">
@@ -914,7 +988,6 @@
           </div>
         </details>
 
-        <!-- ENTGELT -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -948,7 +1021,6 @@
           </div>
         </details>
 
-        <!-- MITBESTIMMUNG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -983,7 +1055,6 @@
           </div>
         </details>
 
-        <!-- TRANSPARENZ -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1017,7 +1088,6 @@
           </div>
         </details>
 
-        <!-- MULTIKULTURELL -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1051,7 +1121,6 @@
           </div>
         </details>
 
-        <!-- BESCHÄFTIGUNGSSICHERUNG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1085,7 +1154,6 @@
           </div>
         </details>
 
-        <!-- MANTELTARIFVERTRAG -->
         <details class="acc">
           <summary>
             <div class="accTitle">
@@ -1121,7 +1189,7 @@
       </div>
     </section>
 
-    <!-- MANIFEST (wie vorher, vollständig) -->
+    <!-- MANIFEST (unverändert) -->
     <section id="manifest">
       <div class="wrap">
         <div class="splitTitle">
@@ -1192,50 +1260,6 @@
             </div>
           </div>
         </details>
-      </div>
-    </section>
-
-    <!-- UPDATES -->
-    <section id="updates">
-      <div class="wrap">
-        <div class="splitTitle">
-          <h2>Beispiel Updates</h2>
-          <p class="muted">Hier posten wir Updates, wenn es etwas gibt oder ansteht.</p>
-        </div>
-
-        <div class="card" style="padding:22px">
-          <div class="box">
-            <h3 style="margin:0">Updates</h3>
-            <p class="muted" style="margin-top:10px">
-              Sobald es Neuigkeiten gibt, veröffentlichen wir sie hier in kurzer, verständlicher Form.
-            </p>
-
-            <div class="updateCard">
-              <div class="updateTop">
-                <span class="badge">Status Update</span>
-                <span class="muted" style="font-size:12px">00.00.2026</span>
-              </div>
-              <b style="display:block; margin-top:8px">Thema: Beispiel Arbeitszeit</b>
-              <p class="muted" style="margin-top:6px">
-                Stand: Rückmeldungen aus den Abteilungen gesammelt.<br>
-                Nächster Schritt: Klärung und Vorschlag erarbeiten.
-              </p>
-            </div>
-
-            <div class="updateCard">
-              <div class="updateTop">
-                <span class="badge">Status Update</span>
-                <span class="muted" style="font-size:12px">00.00.2026</span>
-              </div>
-              <b style="display:block; margin-top:8px">Thema: Beispiel Transparenz</b>
-              <p class="muted" style="margin-top:6px">
-                Stand: Infos zusammengetragen und verständlich aufbereitet.<br>
-                Nächster Schritt: Veröffentlichung als kurzer Überblick.
-              </p>
-            </div>
-
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1327,42 +1351,39 @@
       if(a) closeMenu();
       e.stopPropagation();
     });
-    
-  /******************************************************************
-   * COUNTDOWN (nur Tage) – fix auf Deutschland (Europe/Berlin) ab 00:00
-   ******************************************************************/
-  (function () {
-    const daysEl = document.getElementById("dDays");
-    if (!daysEl) return;
 
-    // Wahl: 17.03.2026 00:00 Uhr Deutschland (CET = UTC+1, da März -> noch keine Sommerzeit)
-    const electionUtc = Date.UTC(2026, 2, 16, 23, 0, 0); // 17.03 00:00 CET = 16.03 23:00 UTC
+    /******************************************************************
+     * COUNTDOWN (nur Tage) – fix auf Deutschland (Europe/Berlin) ab 00:00
+     ******************************************************************/
+    (function () {
+      const daysEl = document.getElementById("dDays");
+      if (!daysEl) return;
 
-    function updateCountdown() {
-      const nowUtc = Date.now();
-      const diff = electionUtc - nowUtc;
+      const electionUtc = Date.UTC(2026, 2, 16, 23, 0, 0); // 17.03 00:00 CET = 16.03 23:00 UTC
 
-      if (diff <= 0) {
-        daysEl.textContent = "0";
-        return;
+      function updateCountdown() {
+        const nowUtc = Date.now();
+        const diff = electionUtc - nowUtc;
+
+        if (diff <= 0) {
+          daysEl.textContent = "0";
+          return;
+        }
+
+        const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        daysEl.textContent = String(days);
       }
 
-      const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
-      daysEl.textContent = String(days);
-    }
+      updateCountdown();
+      setInterval(updateCountdown, 60 * 60 * 1000);
+    })();
 
-    updateCountdown();
-    setInterval(updateCountdown, 60 * 60 * 1000);
-  })();
-    
     /******************************************************************
      * TEAM
      ******************************************************************/
     const PHOTO_BASE = "assets/img/team/";
 
     const team = [
-
-
       { slot: 1, first: "Stefan", last: "Haebich", role: "Listenvertreter" },
       { slot: 2, first: "Angelo", last: "Floris", role: "Mitglied" },
       { slot: 3, first: "Maik-Daniel", last: "Rueb", role: "Mitglied" },
@@ -1374,10 +1395,10 @@
       { slot: 9, first: "Jannik", last: "Stender-Robertz", role: "Mitglied" },
       { slot: 10, first: "Jaqueline", last: "Moeglich", role: "Mitglied" },
       { slot: 11, first: "Sinan-Leon", last: "Fuchs", role: "Mitglied" },
-     
+
       { slot: 13, first: "Marianna", last: "Aratyan", role: "Mitglied" },
       { slot: 14, first: "Kenan", last: "Koemuercue", role: "Mitglied" },
-      
+
       { slot: 16, first: "Bilal", last: "Oeztuerk", role: "Mitglied" },
 
       { slot: 21, first: "Bartholomaeus", last: "Dyba", role: "Mitglied" },
@@ -1389,7 +1410,6 @@
       { slot: 29, first: "Goran", last: "Tonkovic", role: "Mitglied" },
       { slot: 30, first: "Cueneyt", last: "Guenes", role: "Mitglied" },
       { slot: 31, first: "Andreas", last: "Wenner", role: "Mitglied" },
-
     ];
 
     function cleanSlug(s){
@@ -1471,7 +1491,7 @@
     renderTeam();
 
     /******************************************************************
-     * LIGHTBOX (Stefan + alle 32 Mitglieder)
+     * LIGHTBOX (Stefan + Mitglieder + Aushang)
      ******************************************************************/
     const lb = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
